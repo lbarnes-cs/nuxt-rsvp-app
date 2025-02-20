@@ -1,0 +1,37 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.8",
+    "@mdi/font": "^7.4.47",
+    "@nuxtjs/i18n": "9.1.1",
+    "@supabase/supabase-js": "^2.48.1",
+    "@vueuse/core": "^12.5.0",
+    "@vueuse/nuxt": "12.5.0",
+    "add-to-calendar-button": "^2.8.1",
+    "date-fns": "^4.1.0",
+    "h3": "^1.14.0",
+    "nuxt": "^3.15.4",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a",
+  "devDependencies": {
+    "@nuxt/typescript": "^2.8.1",
+    "@playwright/test": "^1.50.1",
+    "sass": "^1.83.4",
+    "sass-loader": "^16.0.4",
+    "typescript": "^5.7.3",
+    "vite-plugin-vuetify": "^2.0.4",
+    "vuetify": "^3.7.9"
+  }
+}

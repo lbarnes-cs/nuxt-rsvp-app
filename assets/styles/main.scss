@@ -1,0 +1,17 @@
+:root {
+  --v-font-primary: "Roboto", sans-serif;
+  --v-font-secondary: "Tangerine", cursive;
+}
+
+.app-link {
+  color: rgb(var(--v-theme-secondary));
+  transition: ease-in-out 200ms color;
+
+  &:hover {
+    color: rgb(var(--v-theme-secondary-darken-1));
+  }
+}
+
+.secondary-font {
+  font-family: var(--v-font-secondary) !important;
+}

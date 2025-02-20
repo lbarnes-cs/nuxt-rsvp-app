@@ -1,0 +1,192 @@
+{
+  "locale": {
+    "en": "EN",
+    "fr": "FR",
+    "pl": "PL",
+    "de": "DE",
+    "it": "IT"
+  },
+  "home": {
+    "title": "Laurence et Romain",
+    "seoTitle": "Laurence et Romain se marient",
+    "rsvpSeoDescription": "Nous vous invitons à répondre à l'invitation pour le mariage de Laurence et Romain",
+    "welcome": "Vous êtes invités au mariage français de Laurence Barnes et Romain Micheli !",
+    "seoDescription": "Vous êtes invités au mariage français de Laurence Barnes et Romain Micheli !",
+    "introduction": "Le 13 juillet, nous vous accueillons dans le village de Romain pour célébrer notre amour. Nous espérons vous y voir.",
+    "openMap": "Ouvrir dans Google Maps"
+  },
+  "and": "et",
+  "banner": {
+    "gettingMarried": "Se marient",
+    "date": "Juillet 13, 2025"
+  },
+  "schedule": {
+    "header": "Rejoignez-nous pour une journée de célébrations.",
+    "description": "Veuillez être là à midi pour la cérémonie. Il y aura des boissons de bienvenue, et après la cérémonie, nous partagerons un repas ensemble."
+  },
+  "questions": {
+    "header": "Questions fréquemment posées",
+    "when": {
+      "question": "Quand ?",
+      "answer": "Le 13 juillet 2025. La propriété est privatisée du 11 au 15 juillet."
+    },
+    "where": {
+      "question": "Où ?",
+      "answer": "The Varenne of Douy, 41320 Châtres-sur-Cher (Loir-et-Cher)",
+      "link": "https://www.mariages.net/domaine-mariage/la-varenne-de-douy--e188279",
+      "description": "Veuillez lire le site Web."
+    },
+    "how": {
+      "question": "Comment s'y rendre ?",
+      "answer": "Pas de transports en commun jusqu'à la propriété. Un véhicule privé est nécessaire. L'aéroport le plus proche est Orly (Paris) et la gare la plus proche est Vierzon. "
+    },
+    "rsvp": {
+      "question": "Comment répondre présent ?",
+      "answer": "Contactez-nous directement pour nous dire combien de temps vous souhaitez rester (jour du mariage seulement ou quelques jours de détente à la campagne) et combien vous serez."
+    },
+    "what-sleep": {
+      "question": "Puis-je loger sur place ? ",
+      "answer": "La propriété dispose de 28 couchages répartis dans 11 chambres. Vous êtes les bienvenus pour le week-end du 11 au 15. Nous apprécions une aide financière pour les nuitées."
+    },
+    "what-eat": {
+      "question": "Et pour la nourriture ?",
+      "answer": "Le repas et les boissons seront bien évidemment fournis le jour du mariage. Faites-nous savoir si vous avez des régimes alimentaires particuliers. Pour les autres jours, nous ferons des courses ensemble."
+    },
+    "what-wear": {
+      "question": "Qu'est-ce que je porte ? ",
+      "answer": "N'hésitez pas à vous habiller avec des vêtements confortables avec votre propre définition de l'élégance. C'est l'été, c'est la campagne et oh oui... nous avons une piscine, alors apportez votre bikini et/ou votre speedo !"
+    },
+    "gifts": {
+      "question": "Quels cadeaux allons-nous offrir à ces deux-là ?",
+      "answer": "Nous n'avons pas besoin de cadeaux, d'autant plus qu'il peut être difficile de rentrer en Allemagne avec des cadeaux inattendus. Cependant, comme nous voyageons bientôt en Australie pour célébrer avec notre famille australienne, nous apprécions toute aide pour payer les billets d'avion. Mais en fin de compte, votre présence pendant le week-end est le seul cadeau dont nous avons vraiment besoin"
+    },
+    "cannot-attend": {
+      "question": "Merde... c'est loin, et si je ne peux pas venir ? ",
+      "answer": "Nous comprenons que notre mariage chic à destination n’est pas la chose la plus simple à organiser. Faites-le-nous savoir et nous serons heureux de tenter de trouver une solution avec vous. Si vous ne pouvez vraiment pas venir, ne vous inquiétez pas, si vous êtes invités c'est parce que vous occupez une place spéciale dans nos cœurs et cela ne changera pas si vous n'êtes pas parmi nous ce jour-là "
+    },
+    "helping": {
+      "question": "Comment pouvons-nous vous aider ?",
+      "answer": "Tout d’abord, merci beaucoup de vouloir contribuer à notre journée. On adore ça ! Nous visons à garder les choses assez discrètes et simples. Mais nous aurons toujours besoin de soutien. Cela peut être en faisant du covoiturage depuis l'aéroport ou en nous aidant à décorer. N'hésitez pas à nous contacter et nous pourrons voir où mettre au mieux vos compétences à profit."
+    },
+    "more": {
+      "question": "Et si j'ai d'autres questions ?",
+      "answer": "Veuillez nous contacter directement !"
+    }
+  },
+  "invite": {
+    "dear": "Chers {guests}",
+    "hello": "Bonjour {guests},",
+    "intro": "Nous sommes tellement heureux que vous vous joigniez à nous pour notre mariage et que vous restiez avec nous ! Pour rendre votre visite aussi fluide et agréable que possible, voici quelques détails importants :",
+    "outro": "Merci encore de faire partie de cette célébration importante. Nous avons vraiment hâte de célébrer avec vous tous !",
+    "regards": "Cordialement",
+    "respondLater": "Répondre plus tard",
+    "submitRSVP": "Envoyer votre RSVP",
+    "travel": {
+      "title": "Voyage et transport",
+      "text": "Le {weddingVenue} est situé dans une zone éloignée, veuillez donc planifier votre trajet en conséquence. Pour ceux qui viennent en avion, l'option la plus pratique est l'aéroport {orlyAirport}. De là, il y a environ {driveDistance}. Nous vous recommandons vivement de louer une voiture — non seulement pour vous rendre sur le lieu de l'événement, mais aussi pour explorer les magnifiques environs et acheter des fournitures ou de la nourriture pendant votre séjour. Veuillez noter que le village est assez petit, sans transport public ni service de taxi disponibles.",
+      "weddingVenue": "lieu du mariage",
+      "orlyAirport": "Aéroport d'Orly",
+      "driveDistance": "2,5 heures de route jusqu'à la propriété (avec des péages)"
+    },
+    "meals": {
+      "title": "Repas et arrangements culinaires",
+      "text": "Nous fournirons de la nourriture pour le jour du mariage, le dimanche 13. Pour le reste de votre séjour, nous vous demandons de bien vouloir organiser vos propres repas. Pour rendre les choses plus amusantes et communautaires, nous encourageons chacun à cuisiner et partager les repas ensemble. La propriété dispose de trois cuisines et de deux barbecues, il y a donc amplement de place pour préparer et profiter de la nourriture ensemble."
+    },
+    "reception": {
+      "title": "Réception de mariage",
+      "text": "Notre réception de mariage proposera un buffet avec une variété de plats, y compris des options végétariennes. Bien que nous ne puissions pas satisfaire toutes les demandes alimentaires spécifiques, nous espérons que vous trouverez quelque chose de délicieux à savourer."
+    },
+    "packing": {
+      "title": "Que faut-il emporter ?",
+      "text": "Voici quelques recommandations pour vous aider à vous préparer :",
+      "item-1": "Une tenue estivale élégante pour le mariage. Nous savons que ce sera en plein été, alors restez frais tout en étant chic.",
+      "item-2": "Essentiels pour la douche (savon et serviettes de douche sont fournis).",
+      "item-3": "Des chaussures confortables pour explorer la forêt.",
+      "item-4": "Maillot de bain et une serviette supplémentaire pour la piscine.",
+      "item-5": "Tout divertissement que vous souhaitez apporter — musique, jeux ou même quelques décorations amusantes pour le mariage.",
+      "item-6": "Et surtout, votre sourire et vos câlins !"
+    },
+    "gifts": {
+      "title": "Cadeaux et contributions",
+      "text": "Beaucoup d'entre vous ont demandé comment ils peuvent contribuer à notre journée spéciale. Si vous souhaitez aider, vous pouvez faire une contribution via {paypal}. Alternativement, n'hésitez pas à nous contacter directement pour nos coordonnées IBAN ou N26.",
+      "paypal": "Paypal"
+    }
+  },
+  "rsvp": {
+    "wouldLikeTo": "voudrait",
+    "invite": "Invitent {name} à leur mariage",
+    "loadingInvite": "Récupération de votre invitation...",
+    "guest": "invité",
+    "alert-header": "RSVP a déjà été soumis.",
+    "alert-submitted": "Votre RSVP précédent a été soumis avec succès et vos détails ont été stockés en toute sécurité. Veuillez noter que toute nouvelle soumission remplacera votre soumission précédente."
+  },
+  "form": {
+    "inviteTitle": "Informations sur l'invitation",
+    "additionalNotes": "Notes supplémentaires ou questions",
+    "guestInformation": "Informations sur l'invité",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "attending": {
+      "true": "Présent",
+      "false": "Absent"
+    },
+    "selectDatesLabel": "Sélectionnez les jours où vous serez avec nous",
+    "dateSelectionHint": "Astuce : choisissez la date d'arrivée et de départ pour sélectionner les jours où vous serez avec nous",
+    "buttonCancel": "Répondre plus tard",
+    "buttonSubmit": "Enregistrer votre RSVP",
+    "buttonClose": "Fermer",
+    "saveErrorTitle": "Une erreur est survenue lors de l'enregistrement de votre invitation",
+    "saveErrorMessage": "Veuillez patienter une minute et essayer à nouveau d'enregistrer votre invitation. Si l'erreur persiste, veuillez contacter les organisateurs du mariage avec une capture d'écran de cette page."
+  },
+  "sharedPhotos": {
+    "title": "Partagez vos photos préférées !",
+    "description-1": "Avez-vous un souvenir spécial capturé en photo ? Que ce soit un moment partagé ensemble ou des souvenirs de différentes étapes de notre vie, nous serions ravis que vous les partagiez avec nous ! Vos photos feront partie d'une belle exposition lors de notre célébration.",
+    "description-1-2": "Avez-vous un souvenir spécial capturé en photo ? Que ce soit un moment partagé ensemble ou un instantané de différentes étapes de notre vie, nous serions ravis que vous les partagiez avec nous ! Vos photos feront partie d'une belle exposition lors de notre célébration.",
+    "description-2": "Nous avons créé un dossier privé pour les téléchargements sécurisés.",
+    "cta": "Téléchargez vos photos ici !"
+  },
+  "confirmation": {
+    "title": "Merci {guests} pour votre inscription",
+    "homepage": "Retour à notre site web",
+    "custom-timeline": "Programme personnalisé du week-end",
+    "text-1": "Nous avons créé un programme de notre week-end de mariage pour vous mettre en joie !",
+    "text-2": "Vous pouvez également enregistrer vos plans du week-end dans le calendrier"
+  },
+  "calendar": {
+    "eventMain": "Ajouter le jour au calendrier",
+    "eventWeekend": "Ajouter le week-end au calendrier",
+    "eventTitle": "Le mariage de Laurence et Romain",
+    "eventWeekendTitle": "Week-end à l'occasion du mariage de Laurence et Romain",
+    "eventDescription": "Rejoignez Laurence Barnes et Romain Micheli pour célébrer leur amour"
+  },
+  "validationRules": {
+    "requiredDates": "Veuillez sélectionner une plage de dates valide.",
+    "attendance": "La présence est obligatoire.",
+    "fieldRequired": "Ce champ est requis.",
+    "requiredAttention": "Il y a des erreurs dans votre formulaire. Elles nécessitent votre attention avant que nous puissions soumettre vos données."
+  },
+  "timeline": {
+    "arrival": "Arrivée à La Varenne de Douy",
+    "saturday-setup": "Nous demanderons à ceux qui sont disponibles de nous aider à préparer le mariage—installer les tables et accrocher les décorations.",
+    "saturday-picnic": "Nous organiserons un petit pique-nique au bord de la piscine pour accueillir tout le monde.",
+    "sunday-drinks": "Nous commencerons par un apéritif.",
+    "sunday-ceremony": "La cérémonie commencera.",
+    "sunday-celebration": "Célébrations, boissons et nous allumerons le barbecue.",
+    "sunday-afterparty": "After-party pour ceux qui restent à La Varenne de Douy.",
+    "monday-farewell": "Comme c'est votre dernier jour, vous êtes les bienvenus pour rester aussi longtemps que vous le souhaitez aujourd'hui. Prenez votre temps pour faire vos bagages et profitez d'une dernière baignade ou randonnée. Nous sommes vraiment reconnaissants d'avoir passé notre mariage avec vous et avons hâte de vous revoir bientôt.",
+    "monday-day": "Nous célébrerons la fête nationale française comme journée de récupération. Détendez-vous au bord de la piscine et buvez du Champagne. Et pour ceux qui souhaitent explorer les villages alentours, nous pouvons faire des recommandations.",
+    "tuesday-farewell": "Notre dernier jour ensemble, mais nous pouvons passer une bonne partie de la journée avant de nous dire au revoir ou à bientôt. Vous pouvez passer la journée avec nous, car le check-out est à {time}.",
+    "tuesday-day": "Vous avez le temps pour une dernière randonnée, baignade ou promenade en barque autour de l'étang. Vous pouvez également faire une petite excursion dans les villages alentours et revenir pour le thé de l'après-midi avant de vous rendre à l'aéroport."
+  },
+  "error-state": {
+    "invite-id-missing": {
+      "title": "Votre identifiant d'invitation semble manquer.",
+      "message": "Aucun identifiant utilisateur inclus dans l'URL. Veuillez vérifier le lien que nous vous avons envoyé et réessayer."
+    },
+    "return-home": "Ramenez-moi à l'accueil",
+    "invite-get": {
+      "title": "Impossible de récupérer votre invitation 😢",
+      "message": "Un problème est survenu lors de la récupération de votre invitation. Veuillez vérifier l'URL que nous vous avons envoyée, le lien pourrait être incorrect. Si les problèmes persistent, veuillez nous en informer."
+    }
+  }
+}

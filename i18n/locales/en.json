@@ -1,0 +1,192 @@
+{
+  "locale": {
+    "en": "EN",
+    "fr": "FR",
+    "pl": "PL",
+    "de": "DE",
+    "it": "IT"
+  },
+  "home": {
+    "title": "Laurence and Romain are getting Married",
+    "seoTitle": "Laurence and Romain are getting Married",
+    "rsvpSeoDescription": "We invite you to RSVP to Laurence and Romain's wedding",
+    "welcome": "You are invited to Laurence Barnes and Romain Micheli's *French* wedding!",
+    "seoDescription": "You are invited to Laurence Barnes and Romain Micheli's French wedding!",
+    "introduction": "On July 13th, we welcome you to Romain's home village to celebrate our love. We hope you can join us.",
+    "openMap": "Open in Google Maps"
+  },
+  "and": "and",
+  "banner": {
+    "gettingMarried": "Are getting married",
+    "date": "July 13, 2025"
+  },
+  "schedule": {
+    "header": "Join us for a day of celebrations",
+    "description": "Please be there by 12pm for the ceremony. There will be welcome drinks, and after the ceremony we will have food together."
+  },
+  "questions": {
+    "header": "Frequently asked questions",
+    "when": {
+      "question": "When?",
+      "answer": "The ceremony will take place the day of July 13th 2025, with a surprise at night. The property is privatised from July 11th to July 15th."
+    },
+    "where": {
+      "question": "Where?",
+      "answer": "The Varenne of Douy. 41320 Châtres-sur-Cher (Loir-et-Cher)",
+      "link": "https://www.mariages.net/domaine-mariage/la-varenne-de-douy--e188279",
+      "description": "Join us on a large charming property on several hectares with heated outdoor swimming pool and pond in the middle of the Sologne forest. Possibility to enjoy wide open spaces and outdoor activities (hiking, cycling, fishing, drone, banks of the Cher, Beauval zoo, Loire castles, etc...), without any nuisance or neighbors nearby. It was previously the former farm of the Château de Douy, and has recently been renovated in the Sologne style."
+    },
+    "how": {
+      "question": "How do I get there?",
+      "answer": "The venue is under two and a half hour drive from Paris. It is located south of Orléans. There are no public transports to the property. Yes, we know it sucks, a private vehicle is necessary. The closest airport is Orly Airport (Paris) and the closest train station is Vierzon. A few of our friends are flying from Berlin and hiring a car. Let us know if you're interested in traveling with them."
+    },
+    "rsvp": {
+      "question": "How do I RSVP?",
+      "answer": "Please contact us directly telling us how long you'd like to stay (wedding day only or want to enjoy some relaxing days in the French countryside), and how many of you are coming?"
+    },
+    "what-sleep": {
+      "question": "What if I want to sleep on the property?",
+      "answer": "The property has a total of 28 beds for 11 rooms in total. You are more than welcome to stay all nights during the long weekend July 11th-15th). We appreciate financial help for the overnight stays. First come, first served!"
+    },
+    "what-eat": {
+      "question": "What about food? ",
+      "answer": "Food and drinks will - obviously - be provided on the wedding day, please let us know if you have dietary requirements. For the other days, we will do a supermarket run together."
+    },
+    "what-wear": {
+      "question": "What do I wear? ",
+      "answer": "Feel free to dress in comfortable clothes with your own definition of elegant. It's summer, it's the countryside and oh, yes... we have a pool, so bring your bikini and/or your speedo!"
+    },
+    "gifts": {
+      "question": "What presents do we get to these two f***ots?",
+      "answer": "We don't need any presents, especially because traveling back to Germany with unexpected presents may be difficult. However, as we are soon traveling to Australia to celebrate with our Australian family, we appreciate any help towards the expensive tickets. Ultimately, your presence, your presence over the weekend is the only present we really need. Please contact us for our paypal or bank details to contribute."
+    },
+    "cannot-attend": {
+      "question": "Crap... it's far, what if I can't make it?",
+      "answer": "We understand that our fancy destination wedding is not the simplest thing to organise. Just let us know and we will be happy to try to find a solution with you. If you really can't come, no worries, if you are invited it's because you hold a special place in our hearts and that won't change if you are not with us on that day!"
+    },
+    "helping": {
+      "question": "How can we help out?",
+      "answer": "First of all, thank you so much for wanting to contribute to our day. We love that! We are aiming to keep things pretty low key and simple. But we will always need support. It may be from car-pooling from the airport or helping us decorate. Feel free to reach our to us and we can see where to best put your skills to good work."
+    },
+    "more": {
+      "question": "What if I have more questions?",
+      "answer": "Please contact us directly! You should know our details by now 😊"
+    }
+  },
+  "invite": {
+    "dear": "Dear {guests}",
+    "hello": "Hello {guests},",
+    "intro": "We are so excited that you'll be joining us for our wedding and staying with us! To help make your visit as seamless and enjoyable as possible, here are a few important details:",
+    "outro": "Thank you again for being part of this important celebration. We truly can't wait to celebrate with all of you!",
+    "regards": "Warm regards",
+    "respondLater": "Respond later",
+    "submitRSVP": "Send your RSVP",
+    "travel": {
+      "title": "Travel and Transportation",
+      "text": "The {weddingVenue} is in a remote area, so please plan your journey accordingly. For those flying in, {orlyAirport} is the most convenient option. From there, it's approximately a {driveDistance}. We highly recommend renting a car—not only to get to the venue but also to explore the beautiful surroundings and pick up any supplies or food during your stay. Please note that the village is quite small, with no public transport or taxi services available.",
+      "weddingVenue": "wedding venue",
+      "airport": "Orly Airport",
+      "driveDistance": "2.5-hour drive to the property (with tolls)"
+    },
+    "meals": {
+      "title": "Meals and Cooking Arrangements",
+      "text": "We will be providing food for the wedding day, Sunday, the 13th. For the rest of your stay, we kindly ask that you arrange your own meals. To make things more fun and communal, we encourage everyone to cook and share meals together. The property has three kitchens and two BBQs, so there's plenty of space to prepare and enjoy food with one another."
+    },
+    "reception": {
+      "title": "Wedding Reception",
+      "text": "Our wedding reception will feature a buffet with a variety of dishes, including vegetarian options. While we may not be able to cater to every specific dietary need, we hope you'll find something delicious to enjoy."
+    },
+    "packing": {
+      "title": "What to bring with you?",
+      "text": "Here are a few recommendations to help you prepare:",
+      "item-1": "A summer-smart outfit for the wedding. We know it will be in the middle of summer, so stay cool, whilst looking cool.",
+      "item-2": "Shower essentials (soap and shower towels are provided).",
+      "item-3": "Comfortable shoes for exploring the forest.",
+      "item-4": "Swimwear and an extra towel for the pool.",
+      "item-5": "Any entertainment you'd like to bring—music, games, or even some fun decorations for the wedding.",
+      "item-6": "And most importantly, your smile and hugs!"
+    },
+    "gifts": {
+      "title": "Gifts and Contributions",
+      "text": "Many of you have asked how you can contribute to our special day. If you'd like to help, you can make a contribution via {paypal}. Alternatively, feel free to contact us directly for our IBAN or N26 account details.",
+      "paypal": "Paypal"
+    }
+  },
+  "rsvp": {
+    "wouldLikeTo": "would like to",
+    "invite": "Invite {name} to their wedding",
+    "loadingInvite": "Fetching your invite...",
+    "guest": "guest",
+    "alert-header": "RSVP already has been submitted.",
+    "alert-submitted": "Your previous RSVP was successfully submitted and your details have been securely stored. Please be aware that any new submission will replace your earlier one."
+  },
+  "form": {
+    "inviteTitle": "Invite Information",
+    "additionalNotes": "Additional Notes or Questions",
+    "guestInformation": "Guest Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "attending": {
+      "true": "Attending",
+      "false": "Not Attending"
+    },
+    "selectDatesLabel": "Select days you will be staying with us",
+    "dateSelectionHint": "Hint: choose the arrival and departure date to select the days you will be staying",
+    "buttonCancel": "Respond later",
+    "buttonSubmit": "Save your RSVP",
+    "buttonClose": "Close",
+    "saveErrorTitle": "There was an error saving your invite",
+    "saveErrorMessage": "Please wait a minute and try saving your invite again. If this error continues, please contact the wedding nerds with a screenshot of this page."
+  },
+  "sharedPhotos": {
+    "title": "Share Your Favorite Photos!",
+    "description-1": "Do you have a special memory captured in a photo? Whether it's a moment we've shared together or from different stages of our lives, we'd love for you to share it with us! Your photos will be part of a beautiful display during our celebration.",
+    "description-1-2": "Do you have a special memory captured in a photo? Whether it's a moment we've shared together or a snapshot from different stages of our lives, we'd love for you to share it with us! Your photos will be part of a beautiful display during our celebration.",
+    "description-2": "We've set up a private folder for secure uploads.",
+    "cta": "Upload your photos here!"
+  },
+  "confirmation": {
+    "title": "Thank you {guests} for registering",
+    "homepage": "Back to our website",
+    "custom-timeline": "Custom timeline of the weekend schedule",
+    "text-1": "We have created a schedule of our wedding weekend to help you get excited!",
+    "text-2": "You can also save your weekend plans to the calendar"
+  },
+  "calendar": {
+    "eventMain": "Add day to Calendar",
+    "eventWeekend": "Add trip to Calendar",
+    "eventTitle": "Laurence and Romain's wedding",
+    "eventWeekendTitle": "Weekend away to Laurence and Romain's wedding",
+    "eventDescription": "Join Laurence Barnes and Romain Micheli celebrate their love"
+  },
+  "validationRules": {
+    "requiredDates": "Please select a valid date range.",
+    "attendance": "Attendance is required.",
+    "fieldRequired": "This field is required.",
+    "requiredAttention": "You have some errors in your form. They require your attention before we can submit your data."
+  },
+  "timeline": {
+    "arrival": "Arrival to La Varenne de Douy",
+    "saturday-setup": "We will ask those who are available to help us set up for the wedding—putting out tables and hanging up decorations.",
+    "saturday-picnic": "We will have a little picnic by the pool to welcome everybody who is staying with us.",
+    "sunday-drinks": "We will start things off with pre-drinks.",
+    "sunday-ceremony": "The ceremony will begin.",
+    "sunday-celebration": "Celebrations, drinks, and we will fire up the BBQ.",
+    "sunday-afterparty": "After-party for those who are staying at La Varenne de Douy.",
+    "monday-farewell": "As it's your last day, you are welcome to stay as long as you want today, so take your time to pack and enjoy one last swim or hike. We are just really grateful to have spent our wedding with you and cannot wait to see you again soon.",
+    "monday-day": "We will celebrate Bastille Day in France as a recovery day. Relax by the pool and drink Champagne. And for those who wish to explore the surrounding villages, we can make some recommendations.",
+    "tuesday-farewell": "Our final day together, but we can spend most of it before saying our goodbyes or see-you-soons. You can spend the day with us, as checkout is at {time}.",
+    "tuesday-day": "You have time for one last hike, swim, or little boat ride around the pond. You can also take a little trip around the surrounding villages and come back for afternoon tea before driving to the airport."
+  },
+  "error-state": {
+    "invite-id-missing": {
+      "title": "Your invite ID appears to be missing.",
+      "message": "No user ID included in the URL. Please check the link we sent to you and try again."
+    },
+    "return-home": "Take me back home",
+    "invite-get": {
+      "title": "Failed to get your invitation 😢",
+      "message": "There has been an issue finding your invitation. Please check the URL we sent you, as the link may be incorrect. If the problems continue, please let us know."
+    }
+  }
+}
