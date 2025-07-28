@@ -1,4 +1,12 @@
-# ✨ Event Info & RSVP Web App
+# ✨ Event Info & RSVP Web App (Code Review)
+
+> ⚠️ This project is intended for **code review purposes only**.  
+> It is not configured to run out of the box, as it requires a Supabase backend with specific tables and environment variables.  
+> If you’re reviewing the code, feel free to explore the logic, structure, and components without needing to run it locally.
+
+---
+
+## ✨ Overview
 
 A modern, internationalized Nuxt 3 web app designed for sharing event details and collecting user responses. Built with Supabase, Vuetify, and Playwright, the project demonstrates a clean architecture, internationalization, and a performant frontend.
 
@@ -12,26 +20,16 @@ This is a pet project build to help a friend run a small event. I have created a
 
 ## 🚀 Features
 
-- **Nuxt 3 Framework**: Full-stack capabilities with file-based routing and hybrid rendering.
-- **Vuetify 3**: Material-based design system with accessible, responsive components and tree-shaking.
-- **Supabase Integration**: Stores RSVP and form data in a managed Postgres database.
-- **Nuxt Server API Endpoints**: Handles all Supabase communication through server routes — keeping secrets safe and enabling backend flexibility.
-- **i18n with Locale Detection**: Detects browser language and serves the corresponding localized version.
-- **Playwright Testing**: Covers end-to-end functionality including redirection, form submission, and more.
-- **Admin Dashboard**: Manage RSVP records, create new entries, and view attendee summaries based on event timeframes.
-
----
-
-## 🛠 Tech Stack
-
-| Purpose              | Tool/Library                              |
-| -------------------- | ----------------------------------------- |
-| Framework            | [Nuxt 3](https://nuxt.com)                |
-| UI Library           | [Vuetify 3](https://vuetifyjs.com)        |
-| Backend-as-a-Service | [Supabase](https://supabase.com)          |
-| Localization (i18n)  | [Vue I18n](https://vue-i18n.intlify.dev/) |
-| Testing              | [Playwright](https://playwright.dev/)     |
-| Build Tool           | [Vite](https://vitejs.dev/)               |
+- **Nuxt 3**: Modern app framework with hybrid rendering and file-based routing
+- **Vuetify 3**: Material Design UI system with tree-shaking enabled for optimized bundle size
+- **Supabase Integration**: Stores RSVP data and enables server-side interaction via Nuxt API routes
+- **Server API Routes**: All backend communication is handled through Nuxt’s server routes, keeping secrets out of the frontend and logic in one place
+- **i18n Support**: Locale is automatically detected from the user's browser and redirects to the appropriate translation
+- **Admin Dashboard**:
+  - View RSVP records
+  - Create new entries
+  - Summarize expected attendance by timeframe
+- **Playwright Testing**: Automated E2E tests for key user flows
 
 ---
 
@@ -52,7 +50,7 @@ Benefits of this approach include:
 
 ## 🌍 Internationalization
 
-The app detects the user's language using the browser’s user agent and redirects to a matching localized version of the site if available.
+The app uses Vue I18n with automatic locale detection via the browser's `navigator.language`.
 
 **Supported languages:**
 
@@ -61,12 +59,6 @@ The app detects the user's language using the browser’s user agent and redirec
 - German (`de`)
 - Italian (`it`)
 - Polish (`pl`)
-
----
-
-## 🔐 Security (Planned)
-
-In a future iteration, write operations (e.g. form submissions) will be secured using **JWT tokens** issued by Supabase Auth.
 
 ---
 
@@ -92,18 +84,24 @@ pnpm test:unit
 
 ---
 
-## 🏗 Development
+## 🛠 Tech Stack
 
-```
-# Install dependencies
-pnpm install
+| Purpose              | Tool/Library                              |
+| -------------------- | ----------------------------------------- |
+| Framework            | [Nuxt 3](https://nuxt.com)                |
+| UI Library           | [Vuetify 3](https://vuetifyjs.com)        |
+| Backend-as-a-Service | [Supabase](https://supabase.com)          |
+| Localization (i18n)  | [Vue I18n](https://vue-i18n.intlify.dev/) |
+| Testing              | [Playwright](https://playwright.dev/)     |
+| Build Tool           | [Vite](https://vitejs.dev/)               |
 
-# Run local dev server
-pnpm run dev
+---
 
-# Build for production
-pnpm run build
-```
+## 🔐 Security (Planned)
+
+In a future iteration, write operations (e.g. form submissions) will be secured using **JWT tokens** issued by Supabase Auth.
+
+---
 
 ## 📌 Roadmap
 
@@ -116,6 +114,7 @@ pnpm run build
 - [ ] Finish merger of the consts for the event, this could also be included in a database to manage multiple events
 - [ ] Add SSO to admin board
 - [ ] JWT-based write protection (planned)
+- [ ] Create a dummy supabase database to allow for this project to be run for review
 
 ---
 
