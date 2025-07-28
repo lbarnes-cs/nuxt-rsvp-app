@@ -1,33 +1,48 @@
-import { ref } from "vue";
+import { ref } from 'vue';
 
-import { useDateFormatter } from "@/composables/useDateFormatter";
+import { useDateFormatter } from '@/composables/useDateFormatter';
+import { useSnackbar } from '@/composables/useSnackbar';
 
-import type { GuestCreationType, GuestType } from "@/types/guest";
-import type { InviteType, InviteCreationType } from "@/types/invite";
+import type { GuestCreationType, GuestType } from '@/types/guest';
+import type { InviteType, InviteCreationType } from '@/types/invite';
+import type { PostgrestError as _PostgrestError } from '@supabase/supabase-js';
+
+const guestTemplate: GuestCreationType = {
+  first_name: null,
+  last_name: null,
+  is_attending: false,
+};
+
+const inviteTemplate: InviteCreationType = {
+  id: '', // empty id on creation
+  shared_photos_link: null,
+  arrival_date: null,
+  departure_date: null,
+  is_arriving_by_train: false,
+  guests: [{ ...guestTemplate }],
+};
 
 export function useInviteManagement() {
   const { formatDate } = useDateFormatter();
+  const { displaySnackbar } = useSnackbar();
 
-  const isSubmitting = ref<boolean>(false);
-
-  const guestBootstrap: GuestCreationType = {
-    first_name: null,
-    last_name: null,
-    is_attending: false,
-  };
+  const isLoading = ref<boolean>(false);
 
   // Initialize the invite for creation with guests as GuestCreationType[]
-  const invite = ref<InviteCreationType | InviteType>({
-    id: "", // empty id on creation
-    shared_photos_link: null,
-    accommadation_arrival_date: null,
-    accommadation_leave_date: null,
-    guests: [{ ...guestBootstrap }],
-  });
+  const invite = ref<InviteCreationType | InviteType>({ ...inviteTemplate });
 
-  const isValid = ref(false);
+  const isFormValid = ref(false);
 
-  const isDraggable = computed(() => (invite.value?.guests?.length ?? 0) > 1);
+  /**
+   * Will only be used in the admin portal to arrange the guest's order-id
+   * for the database. This will be used to set the order of guests for the invite.
+   * EG: Parents before children.
+   *
+   * Admin are only able to enable sort once there is more than one guests per invite.
+   */
+  const areGuestsDraggable = computed<boolean>(
+    () => (invite.value?.guests?.length ?? 0) > 1,
+  );
 
   /**
    * Add new guest to list, using the bootstrap to ensure
@@ -35,7 +50,7 @@ export function useInviteManagement() {
    */
   const addGuest = () => {
     requestAnimationFrame(() => {
-      invite.value.guests.push({ ...(guestBootstrap as GuestType) });
+      invite.value.guests.push({ ...(guestTemplate as GuestType) });
     });
   };
 
@@ -47,9 +62,13 @@ export function useInviteManagement() {
   const removeGuest = (index: number) => {
     if (invite.value.guests.length > 1) {
       invite.value.guests.splice(index, 1);
-    } else {
-      console.error("At least one guest must remain.");
+      return;
     }
+
+    displaySnackbar({
+      message: 'You need at least one guest in the invite',
+      color: 'alert',
+    });
   };
 
   const draggedIndex = ref<number | null>(null);
@@ -70,10 +89,10 @@ export function useInviteManagement() {
   // Computed property to get the date range
   const datesStaying = computed({
     get: () => {
-      const start = invite.value?.accommadation_arrival_date;
-      const end = invite.value?.accommadation_leave_date;
+      const start = invite.value?.arrival_date;
+      const end = invite.value?.departure_date;
 
-      if (!start || !end) {
+      if (!start && !end) {
         return []; // Return an empty array if either date is null
       }
 
@@ -81,80 +100,106 @@ export function useInviteManagement() {
       const startDateParts = formatDate(start);
       const endDateParts = formatDate(end);
 
+      // If only the start date has been selected
+      if (start && !end) {
+        return [startDateParts];
+      }
+
       // Initialize array to store the date range
       const dateArray: Date[] = [];
-      let currentDate = new Date(startDateParts);
+      const earliestSelectedDate = new Date(startDateParts);
 
       // Loop until we reach the end date
-      while (currentDate <= new Date(endDateParts)) {
+      while (earliestSelectedDate <= new Date(endDateParts)) {
         // Add the currentDate as a Date object
-        dateArray.push(new Date(currentDate));
-        currentDate.setDate(currentDate.getDate() + 1); // Increment by 1 day
+        dateArray.push(new Date(earliestSelectedDate));
+        earliestSelectedDate.setDate(earliestSelectedDate.getDate() + 1); // Increment by 1 day
       }
 
       return dateArray;
     },
     set: (newDates: Date[]) => {
+      const arrival_date = new Date(formatDate(newDates[0]));
+
       if (newDates.length >= 2) {
         invite.value = {
           ...invite.value,
-          accommadation_arrival_date: new Date(formatDate(newDates[0])),
-          accommadation_leave_date: new Date(
-            formatDate(newDates[newDates.length - 1])
-          ),
+          arrival_date,
+          departure_date: new Date(formatDate(newDates[newDates.length - 1])),
         };
+
+        return;
       }
+
+      invite.value = {
+        ...invite.value,
+        arrival_date,
+      };
     },
   });
 
+  const onDateStayingsChange = (dateRange: Date[] | string) => {
+    const arrival_date = new Date(formatDate(dateRange[0]));
+    const departure_date = new Date(
+      formatDate(dateRange[dateRange.length - 1]),
+    );
+
+    invite.value = {
+      ...invite.value,
+      arrival_date,
+      departure_date,
+    };
+  };
+
   const submitInvite = async (
     invite: Ref<InviteCreationType | InviteType | null>,
-    isEditMode: boolean
+    isEditMode: boolean,
   ) => {
     if (!invite.value) return;
 
-    isSubmitting.value = true;
+    isLoading.value = true;
 
     const form: InviteCreationType | InviteType = {
       id: invite.value.id,
-      accommadation_arrival_date: invite.value.accommadation_arrival_date,
-      accommadation_leave_date: invite.value.accommadation_leave_date,
+      arrival_date: invite.value.arrival_date,
+      departure_date: invite.value.departure_date,
       shared_photos_link: invite.value.shared_photos_link,
       guests: invite.value.guests,
+      is_arriving_by_train: invite.value.is_arriving_by_train,
     };
 
     const endpoint = isEditMode
       ? `/api/invite/${invite.value.id}`
-      : "/api/invite";
-
-    console.log("endpoint", endpoint);
+      : '/api/invite';
 
     try {
       const response = await $fetch(endpoint, {
-        method: "POST",
+        method: 'POST',
         body: { ...form },
       });
 
-      console.log("useInviteManagement > response", response);
-
       if (!response) {
-        console.log("error", response);
+        // TODO: Loge error to sentry
+        throw new Error(
+          `Issue saving invite: ${response}, endpoint: ${endpoint}`,
+        );
       }
-    } catch (error: any) {
-      console.error("API Error:", error);
+    } catch (error: _PostgrestError | unknown) {
+      // TODO: Log error to sentry
       throw new Error(error);
     }
 
-    isSubmitting.value = false;
+    isLoading.value = false;
     return true;
   };
 
   return {
     invite,
-    isValid,
-    isSubmitting,
-    isDraggable,
+    isFormValid,
+    isLoading,
+    areGuestsDraggable,
     datesStaying,
+    onDateStayingsChange,
     addGuest,
     removeGuest,
     onGuestDragStart,

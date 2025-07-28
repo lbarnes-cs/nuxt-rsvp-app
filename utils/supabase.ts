@@ -6,11 +6,11 @@ export const getSupabaseClient = async () => {
   if (!supabaseUrl || !supabaseKey) {
     throw createError({
       statusCode: 500,
-      message: "Supabase configuration is missing",
+      message: 'Supabase configuration is missing',
     });
   }
 
   // Dynamically import Supabase client since it is an ES module
-  const { createClient } = await import("@supabase/supabase-js");
+  const { createClient } = await import('@supabase/supabase-js');
   return createClient(supabaseUrl, supabaseKey);
 };

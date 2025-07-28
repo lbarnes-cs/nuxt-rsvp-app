@@ -13,7 +13,8 @@
         multi-line
         vertical
       >
-        <div v-html="snackbarSettings.message" class="text-body-1" />
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <div class="text-body-2" v-html="snackbarSettings.message" />
 
         <v-code
           v-if="snackbarSettings.code"
@@ -22,13 +23,13 @@
           {{ snackbarSettings.code }}
         </v-code>
 
-        <template v-slot:actions>
+        <template #actions>
           <v-btn
             color="white"
             variant="text"
             @click="snackbarSettings.show = false"
           >
-            {{ $t("form.buttonClose") }}
+            {{ $t('form.buttonClose') }}
           </v-btn>
         </template>
       </v-snackbar>
@@ -37,9 +38,9 @@
 </template>
 
 <script setup lang="ts">
-import appHeader from "@/components/header.vue";
+  import appHeader from '@/components/app-header.vue';
 
-import { useSnackbar } from "@/composables/useSnackbar";
+  import { useSnackbar } from '@/composables/useSnackbar';
 
-const { snackbarSettings } = useSnackbar();
+  const { snackbarSettings } = useSnackbar();
 </script>

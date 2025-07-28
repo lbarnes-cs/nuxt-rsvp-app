@@ -17,22 +17,28 @@
 </template>
 
 <script setup lang="ts">
-import { useError } from "#app";
+  import { useError } from '#app';
 
-import ErrorCard from "@/components/error-card.vue";
+  import { personA, personB } from '@/constants/people';
 
-// Access the error details
-const error = useError();
+  import ErrorCard from '@/components/error-card.vue';
 
-const { t } = useI18n();
+  // Access the error details
+  const error = useError();
 
-const seoTitle = computed(() => t("home.seoTitle"));
+  const { t } = useI18n();
 
-useSeoMeta({
-  title: () => error.value?.statusMessage || "Page not found",
-  titleTemplate: (title) =>
-    title ? `${title} | ${seoTitle.value}` : seoTitle.value,
-  description: () => "There has been an error",
-  ogUrl: "https://demo.comingsoon.com",
-});
+  const seoTitle = computed(() =>
+    t('home.seoTitle', {
+      personA: personA.firstName,
+      personB: personB.firstName,
+    }),
+  );
+
+  useSeoMeta({
+    title: () => error.value?.statusMessage || 'Page not found',
+    titleTemplate: (title) =>
+      title ? `${title} | ${seoTitle.value}` : seoTitle.value,
+    description: () => 'There has been an error',
+  });
 </script>

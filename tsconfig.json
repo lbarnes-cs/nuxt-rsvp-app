@@ -1,13 +1,7 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "@vueuse/core",
-      "vue-i18n",
-      "@nuxt/typescript",
-      "vite-plugin-vuetify"
-    ],
-    "typeRoots": ["node_modules/@types", "types"],
+    "types": ["@vueuse/core", "vue-i18n", "vite-plugin-vuetify"],
     "baseUrl": ".",
     "paths": {
       "#app": ["./.nuxt/types/app.d.ts"],

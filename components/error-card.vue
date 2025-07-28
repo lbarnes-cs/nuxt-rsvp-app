@@ -16,8 +16,7 @@
         class="align-end text-black"
         height="240"
         cover
-      >
-      </v-img>
+      />
     </div>
 
     <v-card-item>
@@ -27,7 +26,7 @@
           icon="mdi-alert-circle"
           size="small"
           class="me-1"
-        ></v-icon>
+        />
 
         <span class="font-weight-medium">Error: {{ statusCode }}</span>
       </v-card-subtitle>
@@ -37,9 +36,10 @@
       </v-card-title>
     </v-card-item>
 
-    <v-card-text v-html="message"> </v-card-text>
+    <!-- eslint-disable-next-line vue/no-v-html vue/no-v-text-v-html-on-component -->
+    <v-card-text v-html="message" />
 
-    <v-divider class="mx-4 my-2"></v-divider>
+    <v-divider class="mx-4 my-2" />
 
     <v-list-item
       append-icon="mdi-chevron-right"
@@ -47,39 +47,39 @@
       :to="localePath('/')"
     >
       <v-list-item-subtitle opacity="1">
-        <span class="font-weight-bold">{{
-          $t("error-state.return-home")
-        }}</span>
+        <span class="font-weight-bold">
+          {{ $t('error-state.return-home') }}
+        </span>
       </v-list-item-subtitle>
     </v-list-item>
   </v-card>
 </template>
 
 <script setup lang="ts">
-const localePath = useLocalePath();
+  const localePath = useLocalePath();
 
-type Props = {
-  statusCode?: number;
-  statusMessage?: string;
-  message?: string;
-};
+  type Props = {
+    statusCode?: number;
+    statusMessage?: string;
+    message?: string;
+  };
 
-const props = withDefaults(defineProps<Props>(), {
-  statusCode: 500,
-  statusMessage: "This page has gone for a walkabout.",
-  message: "Something went wrong.",
-});
+  const props = withDefaults(defineProps<Props>(), {
+    statusCode: 500,
+    statusMessage: 'This page has gone for a walkabout.',
+    message: 'Something went wrong.',
+  });
 
-const getImagePath = () => {
-  if (props.statusCode === 503)
-    return new URL("@/assets/images/error-state.webp", import.meta.url).href;
+  const getImagePath = () => {
+    if (props.statusCode === 503)
+      return new URL('@/assets/images/error-state.webp', import.meta.url).href;
 
-  return new URL("@/assets/images/error-state.webp", import.meta.url).href; // Fallback for other cases
-};
+    return new URL('@/assets/images/error-state.webp', import.meta.url).href; // Fallback for other cases
+  };
 </script>
 
 <style lang="scss" scoped>
-.errorImage {
-  background: #dfddd9;
-}
+  .errorImage {
+    background: #dfddd9;
+  }
 </style>

@@ -6,14 +6,10 @@
       <v-container>
         <v-row>
           <v-col cols="12" sm="5" class="d-flex justify-center">
-            <v-img
-              src="assets/images/crest/v5.png"
-              max-width="500"
-              md-max-width="100%"
-            >
+            <v-img src="assets/images/crest.png" max-width="500">
               <template #sources>
-                <source srcset="assets/images/crest/v5.webp" />
-                <source srcset="assets/images/crest/v5.avif" />
+                <source srcset="assets/images/crest.webp" />
+                <source srcset="assets/images/crest.avif" />
               </template>
             </v-img>
           </v-col>
@@ -24,14 +20,32 @@
             offset-sm="1"
             class="d-flex flex-column justify-center"
           >
-            <h3 class="text-h4 pb-8">{{ $t("home.welcome") }}</h3>
-            <p>{{ $t("home.introduction") }}</p>
+            <i18n-t
+              keypath="home.welcome"
+              tag="h3"
+              class="text-h4 pb-8"
+              scope="global"
+            >
+              <template #personA>
+                {{ personA.fullName }}
+              </template>
+
+              <template #personB>
+                {{ personB.fullName }}
+              </template>
+            </i18n-t>
+
+            <i18n-t keypath="home.introduction" tag="p" scope="global">
+              <template #personB>
+                {{ personB.firstName }}
+              </template>
+            </i18n-t>
           </v-col>
         </v-row>
       </v-container>
     </div>
 
-    <wedding-schedule />
+    <event-schedule />
 
     <div class="bg-pink-lighten-5 py-16">
       <v-container max-width="1200px">
@@ -44,7 +58,7 @@
         <v-row>
           <v-col cols="12" class="d-flex justify-center">
             <v-btn
-              href="https://maps.app.goo.gl/WytXRTHj6r7rZaoZ7"
+              :href="eventInfo.address.googleMapUrl"
               target="_blank"
               prepend-icon="mdi-map-marker"
               color="secondary"
@@ -67,23 +81,33 @@
 </template>
 
 <script setup lang="ts">
-import banner from "@/components/banner.vue";
+import { personA, personB } from "@/constants/people";
+
+import banner from "@/components/intro-banner.vue";
 import googleMap from "@/components/google-map.vue";
 import frequentQuestions from "@/components/frequent-questions.vue";
-import weddingSchedule from "@/components/wedding-schedule.vue";
+import eventSchedule from "@/components/event-schedule.vue";
+
+import { eventInfo } from "@/constants/event";
 
 const { t } = useI18n();
 
-const seoTitle = computed(() => t("home.seoTitle"));
-const seoDescription = computed(() => t("home.seoDescription"));
-
 useSeoMeta({
-  title: "",
-  description: () => seoDescription.value,
-  ogTitle: () => seoTitle.value,
-  ogDescription: () => seoDescription.value,
-  ogUrl: "https://demo.comingsoon.com",
-  ogType: "website",
+  description: () =>
+    t("home.seoDescription", {
+      personA: personA.fullName,
+      personB: personB.fullName,
+    }),
+  ogTitle: () =>
+    t("home.seoTitle", {
+      personA: personA.firstName,
+      personB: personB.firstName,
+    }),
+  ogDescription: () =>
+    t("home.seoDescription", {
+      personA: personA.firstName,
+      personB: personB.firstName,
+    }),
 });
 </script>
 

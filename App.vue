@@ -5,20 +5,40 @@
 </template>
 
 <script setup>
-import { useHead } from "@unhead/vue";
+  import { useRuntimeConfig } from '#app';
 
-const { t } = useI18n();
+  import { personA, personB } from '@/constants/people';
 
-const seoTitle = computed(() => t("home.seoTitle"));
-const seoDescription = computed(() => t("home.seoDescription"));
+  const { t } = useI18n();
 
-useHead({
-  titleTemplate: (title) =>
-    title ? `${title} | ${seoTitle.value}` : seoTitle.value,
-  description: () => seoDescription.value,
-  ogTitle: () => seoTitle.value,
-  ogDescription: () => seoDescription.value,
-  ogUrl: "https://demo.comingsoon.com",
-  ogType: "website",
-});
+  const config = useRuntimeConfig();
+
+  const seoTitle = computed(() =>
+    t('home.seoTitle', {
+      personA: personA.firstName,
+      personB: personB.firstName,
+    }),
+  );
+
+  useHead({
+    titleTemplate: (title) =>
+      title ? `${title} | ${seoTitle.value}` : seoTitle.value,
+    description: () =>
+      t('home.seoDescription', {
+        personA: personA.firstName,
+        personB: personB.firstName,
+      }),
+    ogTitle: () =>
+      t('home.seoTitle', {
+        personA: personA.firstName,
+        personB: personB.firstName,
+      }),
+    ogDescription: () =>
+      t('home.seoDescription', {
+        personA: personA.firstName,
+        personB: personB.firstName,
+      }),
+    ogUrl: config.public.siteUrl,
+    ogType: 'website',
+  });
 </script>

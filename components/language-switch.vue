@@ -1,14 +1,14 @@
 <template>
   <div>
     <v-menu>
-      <template v-slot:activator="{ props }">
+      <template #activator="{ props }">
         <v-btn
           icon="mdi-translate"
           variant="text"
           size="small"
           v-bind="props"
           class="d-md-none"
-        ></v-btn>
+        />
       </template>
 
       <v-list theme="dark">
@@ -19,13 +19,13 @@
           :key="i"
           :to="switchLocalePath(locale.code)"
         >
-          <template v-slot:prepend>
+          <template #prepend>
             {{ locale.flag }}
           </template>
 
-          <v-list-item-title class="ml-4">{{
-            $t(locale.localeKey)
-          }}</v-list-item-title>
+          <v-list-item-title class="ml-4">
+            {{ $t(locale.localeKey) }}
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -46,13 +46,13 @@
 </template>
 
 <script setup>
-const switchLocalePath = useSwitchLocalePath();
+  const switchLocalePath = useSwitchLocalePath();
 
-const supportedLocale = [
-  { code: "en", localeKey: "locale.en", flag: "🇬🇧" },
-  { code: "fr", localeKey: "locale.fr", flag: "🇫🇷" },
-  { code: "de", localeKey: "locale.de", flag: "🇩🇪" },
-  { code: "it", localeKey: "locale.it", flag: "🇮🇹" },
-  { code: "pl", localeKey: "locale.pl", flag: "🇵🇱" },
-];
+  const supportedLocale = [
+    { code: 'en', localeKey: 'locale.en', flag: '🇬🇧' },
+    { code: 'fr', localeKey: 'locale.fr', flag: '🇫🇷' },
+    { code: 'de', localeKey: 'locale.de', flag: '🇩🇪' },
+    { code: 'it', localeKey: 'locale.it', flag: '🇮🇹' },
+    { code: 'pl', localeKey: 'locale.pl', flag: '🇵🇱' },
+  ];
 </script>

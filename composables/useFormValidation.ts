@@ -1,22 +1,22 @@
-import type { InviteType } from "@/types/invite";
+import type { InviteType } from '@/types/invite';
 
 export function useFormValidation() {
   const { t } = useI18n();
 
   // Validation Rules
   const requiredField = (value: string): true | string =>
-    !!value || t("validationRules.fieldRequired");
+    !!value || t('validationRules.fieldRequired');
 
   const requiredAttendance = (value: boolean | null): true | string =>
-    value !== null || t("validationRules.attendance");
+    value !== null || t('validationRules.attendance');
 
   const validDates = (
     value: Date[] | null,
-    inviteData: InviteType | null
+    inviteData: InviteType | null,
   ): true | string => {
     // Check if any guest has selected `is_attending` as true
     const isAnyGuestAttending = inviteData?.guests.some(
-      (guest) => guest.is_attending === true
+      (guest) => guest.is_attending === true,
     );
 
     // If no guest is attending, the date input is not required
@@ -25,14 +25,14 @@ export function useFormValidation() {
     }
 
     // If at least one guest is attending, validate the date input
-    return (value && value.length >= 2) || t("validationRules.validDates");
+    return (value && value.length >= 2) || t('validationRules.validDates');
   };
 
   const validUrl = (value: string | null): true | string => {
     const urlPattern =
-      /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+      /^https?:\/\/(?:\S+(?::\S*)?@)?([\w.-]+)(:\d+)?(\/[^\s]*)?$/;
 
-    return (value && urlPattern.test(value)) || "Please enter a valid URL";
+    return (value && urlPattern.test(value)) || 'Please enter a valid URL';
   };
 
   /**
@@ -45,7 +45,7 @@ export function useFormValidation() {
   const validUUID = (uuid: string): true | string => {
     const uuidV4Regex =
       /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    return uuidV4Regex.test(uuid) || "Please enter a valid UUID";
+    return uuidV4Regex.test(uuid) || 'Please enter a valid UUID';
   };
 
   return {

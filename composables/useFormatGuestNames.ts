@@ -1,13 +1,13 @@
-import { computed } from "vue";
+import { computed } from 'vue';
 
-import type { GuestType } from "@/types/guest";
+import type { GuestType } from '@/types/guest';
 
 export function useFormatGuestNames(guests: GuestType[] | undefined) {
   const { t } = useI18n();
 
   // Helper function to return a guest's name or "guest" if the name is empty
   const getName = (guest: GuestType | undefined): string => {
-    return guest?.first_name || t("rsvp.guest");
+    return guest?.first_name || t('rsvp.guest');
   };
 
   // Computed property for formatted guest names
@@ -27,7 +27,7 @@ export function useFormatGuestNames(guests: GuestType[] | undefined) {
     // Otherwise, handle multiple guests
     const names = validGuests.map(getName);
     const lastName = names.pop(); // Get the last name
-    return `${names.join(", ")} ${t("and")} ${lastName}`;
+    return `${names.join(', ')} ${t('and')} ${lastName}`;
   });
 
   return formattedNames;

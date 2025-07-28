@@ -1,20 +1,20 @@
 type SnackbarPropsType = {
-  color: "success" | "error";
+  color: 'success' | 'error' | 'alert';
   timeout: number;
   message: string;
   code?: string | null;
 };
 
 type SnackbarRequiredProps = { message: string };
-type SnackbarOptionalProps = Partial<Omit<SnackbarPropsType, "message">>;
+type SnackbarOptionalProps = Partial<Omit<SnackbarPropsType, 'message'>>;
 type SnackbarProps = SnackbarRequiredProps & SnackbarOptionalProps;
 
 export function useSnackbar() {
-  const snackbarSettings = useState("snackbar", () => ({
+  const snackbarSettings = useState('snackbar', () => ({
     show: false,
-    message: "",
+    message: '',
     timeout: 8000,
-    color: "success",
+    color: 'success',
     code: null as string | null,
   }));
 

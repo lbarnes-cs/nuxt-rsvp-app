@@ -1,6 +1,6 @@
-import { getSupabaseClient } from "@/utils/supabase";
+import { getSupabaseClient } from '@/utils/supabase';
 
-import { InviteType } from "@/types/invite";
+import type { InviteType } from '@/types/invite';
 
 export default defineEventHandler(async (event) => {
   const supabase = await getSupabaseClient();
@@ -9,37 +9,37 @@ export default defineEventHandler(async (event) => {
   const inviteId = newInvite.id;
 
   // Ensure we have an invite ID before we move forward
-  if (!inviteId || inviteId.trim() === "") {
+  if (!inviteId || inviteId.trim() === '') {
     throw createError({
       statusCode: 400,
-      message: "Invite ID is required and cannot be empty",
+      message: 'Invite ID is required and cannot be empty',
     });
   }
 
-  const { data, error: inviteError } = await supabase.from("invites").insert({
+  const { error: inviteError } = await supabase.from('invites').insert({
     id: newInvite.id?.trim(),
-    additional_notes: newInvite.additional_notes?.trim() || "",
-    accommadation_arrival_date: newInvite.accommadation_arrival_date,
-    accommadation_leave_date: newInvite.accommadation_leave_date,
+    additional_notes: newInvite.additional_notes?.trim() || '',
+    arrival_date: newInvite.arrival_date,
+    departure_date: newInvite.departure_date,
     shared_photos_link: newInvite.shared_photos_link?.trim(),
     created_at: new Date().toISOString(),
   });
 
   if (inviteError) {
-    console.error("Error updating guest:", {
+    console.error('Error updating guest:', {
       message: inviteError,
       newInvite,
     });
 
     throw createError({
       statusCode: 500,
-      message: "Error saving Invite information",
+      message: 'Error saving Invite information',
     });
   }
 
   await Promise.all(
     newInvite.guests.map(async (guest, index) => {
-      const { error: guestUpdateError } = await supabase.from("guests").insert({
+      const { error: guestUpdateError } = await supabase.from('guests').insert({
         invite_id: inviteId,
         first_name: guest.first_name?.trim(),
         last_name: guest.last_name?.trim(),
@@ -48,7 +48,7 @@ export default defineEventHandler(async (event) => {
       });
 
       if (guestUpdateError) {
-        console.error("Error updating guest:", {
+        console.error('Error updating guest:', {
           message: guestUpdateError,
           guest,
         });
@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
           statusMessage: JSON.stringify(guestUpdateError),
         });
       }
-    })
+    }),
   );
 
   return true;

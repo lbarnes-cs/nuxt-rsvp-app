@@ -16,51 +16,52 @@
       max-width="460"
       return-object
     >
-      <template v-slot:chip="{ props, item }">
-        <v-chip v-bind="props" :text="item.raw?.full_name"></v-chip>
+      <template #chip="{ props: _props, item }">
+        <v-chip v-bind="_props" :text="item.raw?.full_name" />
       </template>
     </v-autocomplete>
   </client-only>
 </template>
 
 <script lang="ts" setup>
-import { ref, defineEmits, defineExpose, computed, onMounted } from "vue";
+  import { ref, computed, onMounted } from 'vue';
 
-import type { GuestType } from "@/types/guest";
+  import type { GuestType } from '@/types/guest';
+  import type { PostgrestError as _PostgrestError } from '@supabase/supabase-js';
 
-const props = defineProps<{
-  modelValue: GuestType[]; // Binds selected guests from parent
-}>();
+  const props = defineProps<{
+    modelValue: GuestType[]; // Binds selected guests from parent
+  }>();
 
-const emit = defineEmits(["update:modelValue"]); // Emits selection changes
+  const emit = defineEmits(['update:modelValue']); // Emits selection changes
 
-const isLoading = ref(false);
-const guestSearchList = ref<GuestType[]>([]);
+  const isLoading = ref(false);
+  const guestSearchList = ref<GuestType[]>([]);
 
-const selectedGuests = computed({
-  get: () => props.modelValue,
-  set: (val) => emit("update:modelValue", val),
-});
+  const selectedGuests = computed({
+    get: () => props.modelValue,
+    set: (val) => emit('update:modelValue', val),
+  });
 
-/**
- * Fetch the list of guests from the API
- */
-const fetchGuests = async () => {
-  isLoading.value = true;
+  /**
+   * Fetch the list of guests from the API
+   */
+  const fetchGuests = async () => {
+    isLoading.value = true;
 
-  try {
-    guestSearchList.value = await $fetch("/api/guests/");
-  } catch (error: any) {
-    console.error(`Error getting list of Guests ${error}`);
-  }
+    try {
+      guestSearchList.value = await $fetch('/api/guests/');
+    } catch (error: _PostgrestError | unknown) {
+      console.error(`Error getting list of Guests ${error}`);
+    }
 
-  isLoading.value = false;
-};
+    isLoading.value = false;
+  };
 
-onMounted(() => {
-  fetchGuests();
-});
+  onMounted(() => {
+    fetchGuests();
+  });
 
-// Expose the fetch function so the parent can call it
-defineExpose({ fetchGuests });
+  // Expose the fetch function so the parent can call it
+  defineExpose({ fetchGuests });
 </script>

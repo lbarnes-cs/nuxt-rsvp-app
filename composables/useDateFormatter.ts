@@ -1,7 +1,7 @@
-import { format, parseISO } from "date-fns";
-import { enUS, de, fr, it, pl, type Locale } from "date-fns/locale"; // Import the locales you need
+import { format, parseISO } from 'date-fns';
+import { enUS, de, fr, it, pl, type Locale } from 'date-fns/locale'; // Import the locales you need
 
-type LocaleKey = "en" | "de" | "fr" | "it" | "pl"; // Add more locales as needed
+type LocaleKey = 'en' | 'de' | 'fr' | 'it' | 'pl'; // Add more locales as needed
 
 export function useDateFormatter() {
   const { locale } = useI18n();
@@ -21,73 +21,78 @@ export function useDateFormatter() {
     return localeMap[currentLocale] || enUS; // Default to enUS if locale is unsupported
   };
 
-  // Function to format date
+  /**
+   * Format the locale date object
+   * eg: Wednesday, July 9th 2025
+   *
+   * Documentation: https://date-fns.org/v4.1.0/docs/format
+   *
+   * @param time
+   * @param formatPattern
+   * @returns {string}
+   */
   const formatLocaleDate = (
     date: string | Date,
-    formatPattern: string = "PP"
+    formatPattern: string = "EEEE, MMMM d'th' yyyy",
   ): string => {
     try {
-      const dateObj = typeof date === "string" ? parseISO(date) : date;
-      // return format(dateObj, formatPattern, { locale: getCurrentLocale() });
+      const dateObj = typeof date === 'string' ? parseISO(date) : date;
 
-      return format(dateObj, "EEEE, MMMM dd'th' yyyy", {
+      return format(dateObj, formatPattern, {
         locale: getCurrentLocale(),
       });
     } catch (error) {
-      console.error("Invalid date provided to formatLocaleDate:", date, error);
-      return "";
+      console.error('Invalid date provided to formatLocaleDate:', date, error);
+      return '';
     }
   };
 
-  // Function to format time
+  /**
+   * Format the dateTime object
+   *
+   * format "p" sets "Long localized time"
+   * eg: 12:00 AM
+   *
+   * Documentation: https://date-fns.org/v4.1.0/docs/format
+   *
+   * @param time
+   * @param formatPattern
+   * @returns {string}
+   */
   const formatLocaleTime = (
     time: string | Date,
-    formatPattern: string = "p"
+    formatPattern: string = 'p',
   ): string => {
     try {
       const timeObj =
-        typeof time === "string" ? parseISO(`1970-01-01T${time}`) : time;
+        typeof time === 'string' ? parseISO(`1970-01-01T${time}`) : time;
+
       const formattedTime = format(timeObj, formatPattern, {
         locale: getCurrentLocale(),
       });
 
       return formattedTime;
     } catch (error) {
-      console.error("Invalid time provided to formatLocaleTime:", time, error);
-      return "";
+      console.error('Invalid time provided to formatLocaleTime:', time, error);
+      return '';
     }
   };
 
-  // Helper function to format date as "YYYY-MM-DD"
-  function formatDate(date: Date | string): string {
+  /**
+   * Formats a date string into a readable format as "YYYY-MM-DD"
+   *
+   * @param date The date string or null
+   */
+  const formatDate = (date: Date | string | null): string => {
     if (date) {
-      const localDate = new Date(date); // Convert to Date object
-      const year = localDate.getFullYear();
-      const month = String(localDate.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
-      const day = String(localDate.getDate()).padStart(2, "0");
-      return `${year}-${month}-${day}`; // Format as YYYY-MM-DD
+      return format(new Date(date), 'yyyy-MM-dd');
     }
 
-    return ""; // Handle edge case if date is neither Date nor string
-  }
-
-  // Helper function to format date as "YYYY-MM-DDT00:00:00"
-  const formatDateWithTime = (date: Date | string, time?: string): string => {
-    if (date) {
-      const localDate = new Date(date);
-      const year = localDate.getFullYear();
-      const month = String(localDate.getMonth() + 1).padStart(2, "0");
-      const day = String(localDate.getDate()).padStart(2, "0");
-
-      return `${year}-${month}-${day}${time}`;
-    }
-
-    return "";
+    return ''; // Handle edge case if date is neither Date nor string
   };
 
   return {
     formatDate,
-    formatDateWithTime,
     formatLocaleDate,
     formatLocaleTime,
   };

@@ -12,18 +12,18 @@
                 icon="mdi-check-decagram-outline"
                 variant="tonal"
               >
-                <template #title>{{ $t("rsvp.alert-header") }}</template>
+                <template #title>{{ $t('rsvp.alert-header') }}</template>
                 <p class="pt-2">
-                  {{ $t("rsvp.alert-submitted") }}
+                  {{ $t('rsvp.alert-submitted') }}
                 </p>
               </v-alert>
             </v-card-text>
 
-            <v-card-title class="mt-2">{{
-              $t("form.inviteTitle")
-            }}</v-card-title>
+            <v-card-title class="mt-2">
+              {{ $t('form.inviteTitle') }}
+            </v-card-title>
 
-            <v-container fluid v-if="invite.guests?.length">
+            <v-container v-if="invite.guests?.length" fluid>
               <v-row v-if="invite?.guests">
                 <v-col
                   v-for="guest in invite?.guests"
@@ -35,10 +35,10 @@
                     class="height-auto"
                     color="grey-lighten-1"
                   >
-                    <template v-slot:title>
-                      <span class="text-grey-darken-4">{{
-                        $t("form.guestInformation")
-                      }}</span>
+                    <template #title>
+                      <span class="text-grey-darken-4">
+                        {{ $t('form.guestInformation') }}
+                      </span>
                     </template>
 
                     <v-container fluid>
@@ -77,11 +77,11 @@
                             :rules="[requiredAttendance]"
                           >
                             <v-btn :value="false">
-                              {{ $t("form.attending.false") }}
+                              {{ $t('form.attending.false') }}
                             </v-btn>
 
                             <v-btn :value="true">
-                              {{ $t("form.attending.true") }}
+                              {{ $t('form.attending.true') }}
                             </v-btn>
                           </v-btn-toggle>
                         </v-col>
@@ -97,14 +97,15 @@
                     v-model="datesStaying"
                     :label="$t('form.selectDatesLabel')"
                     multiple="range"
-                    min="2025-07-11"
-                    max="2025-07-15"
+                    :min="eventInfo.eventDate.minArrivalDate"
+                    :max="eventInfo.eventDate.maxDepartureDate"
                     :month="6"
                     :year="2025"
                     persistent-hint
                     :rules="[(value) => validDates(value, inviteData)]"
                     :hint="$t('form.dateSelectionHint')"
                     :hint-details="false"
+                    :hide-actions="false"
                   />
                 </v-col>
 
@@ -114,7 +115,7 @@
                     :label="$t('form.additionalNotes')"
                     prepend-icon="mdi-note-edit-outline"
                     rows="4"
-                  ></v-textarea>
+                  />
                 </v-col>
               </v-row>
             </v-container>
@@ -130,13 +131,13 @@
                 color="secondary"
                 :disabled="isSubmitting"
               >
-                {{ $t("form.buttonCancel") }}
+                {{ $t('form.buttonCancel') }}
               </v-btn>
 
               <v-spacer />
 
               <v-btn :loading="isSubmitting" color="primary" type="submit">
-                {{ $t("form.buttonSubmit") }}
+                {{ $t('form.buttonSubmit') }}
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -147,208 +148,210 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter, useRoute } from "vue-router";
-import { useGoTo } from "vuetify";
-import { VDateInput } from "vuetify/labs/VDateInput";
+  import { useRouter, useRoute } from 'vue-router';
+  import { useGoTo } from 'vuetify';
+  import { VDateInput } from 'vuetify/labs/VDateInput';
 
-import { createError } from "#app";
+  import { createError } from '#app';
 
-import type { NuxtError } from "nuxt/app";
-import type { InternalGoToOptions } from "vuetify/lib/composables/goto";
-import type { InviteType } from "@/types/invite";
-import type { GuestType } from "@/types/guest";
+  import type { NuxtError } from 'nuxt/app';
+  import type { InternalGoToOptions } from 'vuetify/lib/composables/goto';
+  import type { InviteType } from '@/types/invite';
+  import type { GuestType } from '@/types/guest';
+  import type { PostgrestError as _PostgrestError } from '@supabase/supabase-js';
 
-import inviteBanner from "@/components/invite-banner.vue";
+  import inviteBanner from '@/components/invite-banner.vue';
 
-import { useDateFormatter } from "@/composables/useDateFormatter";
-import { useFormValidation } from "@/composables/useFormValidation";
-import { useSnackbar } from "@/composables/useSnackbar";
+  import { useDateFormatter } from '@/composables/useDateFormatter';
+  import { useFormValidation } from '@/composables/useFormValidation';
+  import { useSnackbar } from '@/composables/useSnackbar';
 
-// Form Validation
-const { requiredField, requiredAttendance, validDates } = useFormValidation();
 
-// Date Formatter
-const { formatDate } = useDateFormatter();
+  import { eventInfo } from '@/constants/event';
 
-const { displaySnackbar } = useSnackbar();
+  // Form Validation
+  const { requiredField, requiredAttendance, validDates } = useFormValidation();
 
-const route = useRoute();
-const router = useRouter();
-const goTo = useGoTo();
-const localePath = useLocalePath();
-const { t } = useI18n();
+  // Date Formatter
+  const { formatDate } = useDateFormatter();
 
-// Retrieve inviteId from the URL
-const inviteId = route.params.id as string | undefined; // Get the `id` from route params
+  const { displaySnackbar } = useSnackbar();
 
-const invite = ref<InviteType>({} as InviteType);
-const guestInfomation = ref([] as GuestType[]);
+  const route = useRoute();
+  const router = useRouter();
+  const goTo = useGoTo();
+  const localePath = useLocalePath();
+  const { t } = useI18n();
 
-// Set the states
-const isValid = ref<boolean>(false);
-const isLoading = ref<boolean>(true);
-const isSubmitting = ref<boolean>(false);
+  // Retrieve inviteId from the URL
+  const inviteId = route.params.id as string | undefined; // Get the `id` from route params
 
-// Fetch the invite API
-const { data: inviteData, error: inviteError } = await useAsyncData<InviteType>(
-  "inviteData",
-  () => $fetch(`/api/invite/${inviteId}`)
-);
+  const invite = ref<InviteType>({} as InviteType);
+  const guestInfomation = ref([] as GuestType[]);
 
-// Handle errors from API fetch
-if (inviteError.value) {
-  const nuxtError = createError({
-    statusCode: 404,
-    statusMessage: t("error-state.invite-get.title"),
-    message: `<p>${t(
-      "error-state.invite-get.message"
-    )}</p> <p class="mt-4 font-italic">Message: ${inviteError.value}</p>`,
-  });
+  // Set the states
+  const isValid = ref<boolean>(false);
+  const isLoading = ref<boolean>(true);
+  const isSubmitting = ref<boolean>(false);
 
-  useError().value = nuxtError; // Make sure the error is properly handled
-  throw nuxtError;
-}
+  // Fetch the invite API
+  const { data: inviteData, error: inviteError } =
+    await useAsyncData<InviteType>('inviteData', () =>
+      $fetch(`/api/invite/${inviteId}`),
+    );
 
-// Update states
-// Get information from the API-fetch and associate it to the refs
-invite.value = { ...(inviteData.value as InviteType) };
-
-// Clone the array without reference
-guestInfomation.value = inviteData.value?.guests?.map((guest: GuestType) => ({
-  ...guest,
-})) as GuestType[];
-
-isLoading.value = false;
-
-// Computed property to get the date range
-const datesStaying = computed({
-  get: () => {
-    const start = invite.value?.accommadation_arrival_date;
-    const end = invite.value?.accommadation_leave_date;
-
-    if (!start || !end) {
-      return []; // Return an empty array if either date is null
-    }
-
-    // Format the start and end dates
-    const startDateParts = formatDate(start);
-    const endDateParts = formatDate(end);
-
-    // Initialize array to store the date range
-    const dateArray: Date[] = [];
-    let currentDate = new Date(startDateParts);
-
-    // Loop until we reach the end date
-    while (currentDate <= new Date(endDateParts)) {
-      // Add the currentDate as a Date object
-      dateArray.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() + 1); // Increment by 1 day
-    }
-
-    return dateArray;
-  },
-  set: (newDates: Date[]) => {
-    if (newDates.length >= 2) {
-      invite.value = {
-        ...invite.value,
-        accommadation_arrival_date: new Date(formatDate(newDates[0])),
-        accommadation_leave_date: new Date(
-          formatDate(newDates[newDates.length - 1])
-        ),
-      };
-    }
-  },
-});
-
-function scrollToFirstError() {
-  // Find all error inputs
-  const errorElements = document.querySelectorAll(".v-input--error");
-
-  // Check if there are any error elements
-  if (errorElements.length > 0) {
-    const firstErrorElement = errorElements[0] as HTMLElement;
-
-    // Scroll to the first error element using Vuetify's goTo
-    const goToOptions: Partial<Partial<InternalGoToOptions>> = {
-      duration: 300,
-      easing: "easeInOutCubic",
-      offset: -80,
-    };
-
-    goTo(firstErrorElement, goToOptions);
-  }
-}
-
-// Update the invite and guest details
-const updateInvite = async () => {
-  if (!isValid.value) {
-    displaySnackbar({
-      message: t("validationRules.requiredAttention"),
-      color: "error",
+  // Handle errors from API fetch
+  if (inviteError.value) {
+    const nuxtError = createError({
+      statusCode: 404,
+      statusMessage: t('error-state.invite-get.title'),
+      message: `<p>${t(
+        'error-state.invite-get.message',
+      )}</p> <p class="mt-4 font-italic">Message: ${inviteError.value}</p>`,
     });
 
-    return scrollToFirstError();
+    useError().value = nuxtError; // Make sure the error is properly handled
+    throw nuxtError;
   }
 
-  if (isValid.value && inviteId && invite.value && invite.value?.guests) {
-    isSubmitting.value = true;
-    // Ensure that invite.value is being used and type it properly
-    const first_replied = invite.value.first_replied
-      ? new Date(invite.value.first_replied)
-      : new Date();
+  // Update states
+  // Get information from the API-fetch and associate it to the refs
+  invite.value = { ...(inviteData.value as InviteType) };
 
-    const form: Partial<InviteType> = {
-      first_replied,
-      additional_notes: invite.value.additional_notes || "",
-      update_timestamp: new Date(),
-      accommadation_arrival_date: invite.value.accommadation_arrival_date,
-      accommadation_leave_date: invite.value.accommadation_leave_date,
-      guests: invite.value.guests, // Include guests if needed, if it's part of the update
-      created_at: invite.value.created_at, // Include created_at if needed
-    };
+  // Clone the array without reference
+  guestInfomation.value = inviteData.value?.guests?.map((guest: GuestType) => ({
+    ...guest,
+  })) as GuestType[];
 
-    try {
-      const response = await $fetch(`/api/invite/${inviteId}`, {
-        method: "POST",
-        body: { ...form },
+  isLoading.value = false;
+
+  // Computed property to get the date range
+  const datesStaying = computed({
+    get: () => {
+      const start = invite.value?.arrival_date;
+      const end = invite.value?.departure_date;
+
+      if (!start || !end) {
+        return []; // Return an empty array if either date is null
+      }
+
+      // Format the start and end dates
+      const startDateParts = formatDate(start);
+      const endDateParts = formatDate(end);
+
+      // Initialize array to store the date range
+      const dateArray: Date[] = [];
+      const currentDate = new Date(startDateParts);
+
+      // Loop until we reach the end date
+      while (currentDate <= new Date(endDateParts)) {
+        // Add the currentDate as a Date object
+        dateArray.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1); // Increment by 1 day
+      }
+
+      return dateArray;
+    },
+    set: (newDates: Date[]) => {
+      if (newDates.length >= 2) {
+        invite.value = {
+          ...invite.value,
+          arrival_date: new Date(formatDate(newDates[0])),
+          departure_date: new Date(formatDate(newDates[newDates.length - 1])),
+        };
+      }
+    },
+  });
+
+  function scrollToFirstError() {
+    // Find all error inputs
+    const errorElements = document.querySelectorAll('.v-input--error');
+
+    // Check if there are any error elements
+    if (errorElements.length > 0) {
+      const firstErrorElement = errorElements[0] as HTMLElement;
+
+      // Scroll to the first error element using Vuetify's goTo
+      const goToOptions: Partial<Partial<InternalGoToOptions>> = {
+        duration: 300,
+        easing: 'easeInOutCubic',
+        offset: -80,
+      };
+
+      goTo(firstErrorElement, goToOptions);
+    }
+  }
+
+  // Update the invite and guest details
+  const updateInvite = async () => {
+    if (!isValid.value) {
+      displaySnackbar({
+        message: t('validationRules.requiredAttention'),
+        color: 'error',
       });
 
-      if (response) {
-        const path = localePath({
-          name: "rsvp-id-confirmation",
-          params: { id: inviteId },
-        });
-
-        router.push(path);
-      }
-    } catch (error: any) {
-      displayAPIErrorMessage(error);
+      return scrollToFirstError();
     }
 
-    isSubmitting.value = false;
-  }
-};
+    if (isValid.value && inviteId && invite.value && invite.value?.guests) {
+      isSubmitting.value = true;
+      // Ensure that invite.value is being used and type it properly
+      const first_replied = invite.value.first_replied
+        ? new Date(invite.value.first_replied)
+        : new Date();
 
-function displayAPIErrorMessage(apiErrorMessage: NuxtError<unknown> | null) {
-  const message = `
-      <p class="text-subtitle-1 pb-2">${t("form.saveErrorTitle")}</p>
+      const form: Partial<InviteType> = {
+        first_replied,
+        additional_notes: invite.value.additional_notes || '',
+        update_timestamp: new Date(),
+        arrival_date: invite.value.arrival_date,
+        departure_date: invite.value.departure_date,
+        guests: invite.value.guests, // Include guests if needed, if it's part of the update
+        created_at: invite.value.created_at, // Include created_at if needed
+      };
+
+      try {
+        const response = await $fetch(`/api/invite/${inviteId}`, {
+          method: 'POST',
+          body: { ...form },
+        });
+
+        if (response) {
+          const path = localePath({
+            name: 'rsvp-id-confirmation',
+            params: { id: inviteId },
+          });
+
+          router.push(path);
+        }
+      } catch (error: _PostgrestError | unknown) {
+        displayAPIErrorMessage(error);
+      }
+
+      isSubmitting.value = false;
+    }
+  };
+
+  function displayAPIErrorMessage(apiErrorMessage: NuxtError<unknown> | null) {
+    const message = `
+      <p class="text-subtitle-1 mb-2">${t('form.saveErrorTitle')}</p>
 
       <p class="pb-4">
-        ${t("form.saveErrorMessage")}
+        ${t('form.saveErrorMessage')}
       </p>`;
 
-  displaySnackbar({
-    message: message,
-    code: JSON.stringify(apiErrorMessage?.data),
-    color: "error",
-    timeout: -1,
-  });
-}
+    displaySnackbar({
+      message: message,
+      code: JSON.stringify(apiErrorMessage?.data),
+      color: 'error',
+      timeout: -1,
+    });
+  }
 </script>
 
 <style lang="scss" scoped>
-.custom-error {
-  max-height: 300px;
-  overflow: scroll;
-}
+  .custom-error {
+    max-height: 300px;
+    overflow: scroll;
+  }
 </style>

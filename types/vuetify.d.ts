@@ -1,4 +1,4 @@
-declare module "vuetify/lib/composables/goto" {
+declare module 'vuetify/lib/composables/goto' {
   export interface InternalGoToOptions {
     path: string;
     container?: string | HTMLElement;

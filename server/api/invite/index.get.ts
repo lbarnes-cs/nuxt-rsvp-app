@@ -1,31 +1,31 @@
-import { getSupabaseClient } from "@/utils/supabase";
+import { getSupabaseClient } from '@/utils/supabase';
 
-import { InviteAdminType, InviteType } from "@/types/invite";
-import { GuestType } from "@/types/guest";
+import type { InviteAdminType, InviteType } from '@/types/invite';
+import type { GuestType } from '@/types/guest';
 
 export default defineEventHandler(async () => {
   const supabase = await getSupabaseClient();
 
   const { data: allInvites, error: invitesError } = await supabase
-    .from("invites")
-    .select("*");
+    .from('invites')
+    .select('*');
 
   if (invitesError) {
-    console.error("Error fetching invites:", invitesError.message); // Add logging here
-    throw createError({ statusCode: 404, message: "Invites not found" });
+    console.error('Error fetching invites:', invitesError.message); // Add logging here
+    throw createError({ statusCode: 404, message: 'Invites not found' });
   }
 
-  const { data: allGuests, error: guestsError } = await supabase
-    .from("guests")
-    .select("*")
-    .order("order", { ascending: true });
+  const { data: allGuests } = await supabase
+    .from('guests')
+    .select('*')
+    .order('order', { ascending: true });
 
   const invitesWithGuests: InviteAdminType[] = allInvites.map(
     (invite: InviteType) => {
       // Get all guests related to this invite
       const inviteGuests =
         allGuests?.filter(
-          (guest: GuestType) => guest.invite_id === invite.id
+          (guest: GuestType) => guest.invite_id === invite.id,
         ) || [];
 
       // Calculate guest count
@@ -33,7 +33,7 @@ export default defineEventHandler(async () => {
 
       // Calculate attending guest count (guests who are attending)
       const attendingGuestCount = inviteGuests.filter(
-        (guest: GuestType) => guest.is_attending === true
+        (guest: GuestType) => guest.is_attending === true,
       ).length;
 
       // Check if any guest is attending
@@ -50,13 +50,13 @@ export default defineEventHandler(async () => {
         attending_guest_count: attendingGuestCount,
         has_submitted_rsvp: hasSubmittedRSVP,
       } as InviteAdminType;
-    }
+    },
   );
 
   // Calculate the total number of attending guests across all invites
   const totalAttendingGuests: number = invitesWithGuests.reduce(
     (total, invite) => total + invite.attending_guest_count,
-    0
+    0,
   );
 
   return {

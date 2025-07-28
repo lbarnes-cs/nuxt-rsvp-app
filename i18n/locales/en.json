@@ -1,127 +1,144 @@
 {
-  "locale": {
-    "en": "EN",
-    "fr": "FR",
-    "pl": "PL",
-    "de": "DE",
-    "it": "IT"
-  },
   "home": {
-    "title": "Laurence and Romain are getting Married",
-    "seoTitle": "Laurence and Romain are getting Married",
-    "rsvpSeoDescription": "We invite you to RSVP to Laurence and Romain's wedding",
-    "welcome": "You are invited to Laurence Barnes and Romain Micheli's *French* wedding!",
-    "seoDescription": "You are invited to Laurence Barnes and Romain Micheli's French wedding!",
-    "introduction": "On July 13th, we welcome you to Romain's home village to celebrate our love. We hope you can join us.",
-    "openMap": "Open in Google Maps"
+    "seoTitle": "Join us for an unforgettable boutique festival",
+    "seoDescription": "Experience music, art, and good vibes in a stunning natural setting.",
+    "rsvpSeoDescription": "Ready to join the fun? RSVP to secure your spot at our festival!",
+    "welcome": "Welcome to our *boutique festival* — your getaway for great times and new friends!",
+    "introduction": "Soon, we'll open the gates to a magical gathering in a cozy village where music, laughter, and community come alive. We can't wait to have you with us!",
+    "openMap": "Explore the festival location on Google Maps"
   },
   "and": "and",
   "banner": {
-    "gettingMarried": "Are getting married",
-    "date": "July 13, 2025"
+    "gettingMarried": "Presenting our boutique festival",
+    "date": "Date to be announced"
   },
   "schedule": {
-    "header": "Join us for a day of celebrations",
-    "description": "Please be there by 12pm for the ceremony. There will be welcome drinks, and after the ceremony we will have food together."
+    "header": "Join us for a weekend full of experiences",
+    "description": "The festival starts midday with welcome performances, followed by food, music, and late-night celebrations."
   },
   "questions": {
     "header": "Frequently asked questions",
     "when": {
-      "question": "When?",
-      "answer": "The ceremony will take place the day of July 13th 2025, with a surprise at night. The property is privatised from July 11th to July 15th."
+      "question": "When is the festival?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Expect a weekend packed with fun, dates to be revealed soon."
     },
     "where": {
-      "question": "Where?",
-      "answer": "The Varenne of Douy. 41320 Châtres-sur-Cher (Loir-et-Cher)",
-      "link": "https://www.mariages.net/domaine-mariage/la-varenne-de-douy--e188279",
-      "description": "Join us on a large charming property on several hectares with heated outdoor swimming pool and pond in the middle of the Sologne forest. Possibility to enjoy wide open spaces and outdoor activities (hiking, cycling, fishing, drone, banks of the Cher, Beauval zoo, Loire castles, etc...), without any nuisance or neighbors nearby. It was previously the former farm of the Château de Douy, and has recently been renovated in the Sologne style."
+      "question": "Where is it happening?",
+      "answer": "In a beautiful rural property surrounded by nature and open skies, perfect for relaxing and celebration.",
+      "link": "https://example.com",
+      "description": "Enjoy wide open spaces, trails, and cozy corners designed for mingling and music, all nestled in serene countryside."
     },
     "how": {
       "question": "How do I get there?",
-      "answer": "The venue is under two and a half hour drive from Paris. It is located south of Orléans. There are no public transports to the property. Yes, we know it sucks, a private vehicle is necessary. The closest airport is Orly Airport (Paris) and the closest train station is Vierzon. A few of our friends are flying from Berlin and hiring a car. Let us know if you're interested in traveling with them."
+      "answer": "The venue is a short drive from the nearest city. We recommend renting a car for the most flexible travel experience."
     },
     "rsvp": {
       "question": "How do I RSVP?",
-      "answer": "Please contact us directly telling us how long you'd like to stay (wedding day only or want to enjoy some relaxing days in the French countryside), and how many of you are coming?"
+      "answer": "Simply let us know if you're coming and how many will join you. We can't wait to celebrate together!"
     },
     "what-sleep": {
-      "question": "What if I want to sleep on the property?",
-      "answer": "The property has a total of 28 beds for 11 rooms in total. You are more than welcome to stay all nights during the long weekend July 11th-15th). We appreciate financial help for the overnight stays. First come, first served!"
+      "question": "Can I stay overnight?",
+      "answer": "Absolutely! There are limited spaces available for camping and cozy cabins. Book early to secure your spot."
     },
     "what-eat": {
-      "question": "What about food? ",
-      "answer": "Food and drinks will - obviously - be provided on the wedding day, please let us know if you have dietary requirements. For the other days, we will do a supermarket run together."
+      "question": "What about food and drinks?",
+      "answer": "We have delicious food trucks and local vendors throughout the festival. Bring your appetite!"
     },
     "what-wear": {
-      "question": "What do I wear? ",
-      "answer": "Feel free to dress in comfortable clothes with your own definition of elegant. It's summer, it's the countryside and oh, yes... we have a pool, so bring your bikini and/or your speedo!"
+      "question": "What should I wear?",
+      "answer": "Dress comfortably and express your unique style. Expect outdoor festival vibes—think layers, comfy shoes, and a splash of color."
     },
     "gifts": {
-      "question": "What presents do we get to these two f***ots?",
-      "answer": "We don't need any presents, especially because traveling back to Germany with unexpected presents may be difficult. However, as we are soon traveling to Australia to celebrate with our Australian family, we appreciate any help towards the expensive tickets. Ultimately, your presence, your presence over the weekend is the only present we really need. Please contact us for our paypal or bank details to contribute."
+      "question": "Can I contribute or help?",
+      "answer": "If you'd like to support the festival, contributions are welcome via {paypal}. Contact us for details.",
+      "answer-1": "Or reach out to see how you can lend a hand behind the scenes.",
+      "key": "Paypal"
     },
     "cannot-attend": {
-      "question": "Crap... it's far, what if I can't make it?",
-      "answer": "We understand that our fancy destination wedding is not the simplest thing to organise. Just let us know and we will be happy to try to find a solution with you. If you really can't come, no worries, if you are invited it's because you hold a special place in our hearts and that won't change if you are not with us on that day!"
+      "question": "What if I can’t make it?",
+      "answer": "We’ll miss you, but no worries! Stay tuned for future events and community gatherings."
     },
     "helping": {
-      "question": "How can we help out?",
-      "answer": "First of all, thank you so much for wanting to contribute to our day. We love that! We are aiming to keep things pretty low key and simple. But we will always need support. It may be from car-pooling from the airport or helping us decorate. Feel free to reach our to us and we can see where to best put your skills to good work."
+      "question": "How can I help out?",
+      "answer": "We love volunteers! Whether it’s setup, welcoming guests, or creative workshops, reach out and we’ll find a spot for you."
     },
     "more": {
-      "question": "What if I have more questions?",
-      "answer": "Please contact us directly! You should know our details by now 😊"
+      "question": "Got more questions?",
+      "answer": "Drop us a line anytime! We're here to help make your festival experience amazing."
     }
   },
   "invite": {
     "dear": "Dear {guests}",
     "hello": "Hello {guests},",
-    "intro": "We are so excited that you'll be joining us for our wedding and staying with us! To help make your visit as seamless and enjoyable as possible, here are a few important details:",
-    "outro": "Thank you again for being part of this important celebration. We truly can't wait to celebrate with all of you!",
-    "regards": "Warm regards",
+    "intro": "We’re thrilled you’ll be joining us at our boutique festival! Here’s some info to help you get ready for the weekend ahead:",
+    "outro": "Thanks for being part of this special community gathering. We can’t wait to celebrate together!",
+    "regards": "Warm festival vibes",
     "respondLater": "Respond later",
     "submitRSVP": "Send your RSVP",
-    "travel": {
-      "title": "Travel and Transportation",
-      "text": "The {weddingVenue} is in a remote area, so please plan your journey accordingly. For those flying in, {orlyAirport} is the most convenient option. From there, it's approximately a {driveDistance}. We highly recommend renting a car—not only to get to the venue but also to explore the beautiful surroundings and pick up any supplies or food during your stay. Please note that the village is quite small, with no public transport or taxi services available.",
-      "weddingVenue": "wedding venue",
-      "airport": "Orly Airport",
-      "driveDistance": "2.5-hour drive to the property (with tolls)"
-    },
-    "meals": {
-      "title": "Meals and Cooking Arrangements",
-      "text": "We will be providing food for the wedding day, Sunday, the 13th. For the rest of your stay, we kindly ask that you arrange your own meals. To make things more fun and communal, we encourage everyone to cook and share meals together. The property has three kitchens and two BBQs, so there's plenty of space to prepare and enjoy food with one another."
-    },
-    "reception": {
-      "title": "Wedding Reception",
-      "text": "Our wedding reception will feature a buffet with a variety of dishes, including vegetarian options. While we may not be able to cater to every specific dietary need, we hope you'll find something delicious to enjoy."
-    },
-    "packing": {
-      "title": "What to bring with you?",
-      "text": "Here are a few recommendations to help you prepare:",
-      "item-1": "A summer-smart outfit for the wedding. We know it will be in the middle of summer, so stay cool, whilst looking cool.",
-      "item-2": "Shower essentials (soap and shower towels are provided).",
-      "item-3": "Comfortable shoes for exploring the forest.",
-      "item-4": "Swimwear and an extra towel for the pool.",
-      "item-5": "Any entertainment you'd like to bring—music, games, or even some fun decorations for the wedding.",
-      "item-6": "And most importantly, your smile and hugs!"
-    },
-    "gifts": {
-      "title": "Gifts and Contributions",
-      "text": "Many of you have asked how you can contribute to our special day. If you'd like to help, you can make a contribution via {paypal}. Alternatively, feel free to contact us directly for our IBAN or N26 account details.",
-      "paypal": "Paypal"
+    "sections": {
+      "travel": {
+        "title": "Travel and Transportation",
+        "text": "The {venue} is a tranquil retreat surrounded by nature. The closest airport is {airport}, approximately a {driveDistance} away. Car rental is encouraged for ease and exploration.",
+        "slots": [
+          {
+            "key": "venue",
+            "value": "VENUE_GOOGLE_MAPS",
+            "text": "festival venue"
+          },
+          {
+            "key": "airport",
+            "url": "https://example-airport.com",
+            "text": "Nearby Airport"
+          },
+          {
+            "key": "driveDistance",
+            "url": "https://maps.example.com",
+            "text": "1.5-hour scenic drive to the property"
+          }
+        ]
+      },
+      "meals": {
+        "title": "Food and Drink",
+        "text": "Enjoy a variety of local food vendors and food trucks throughout the festival. Bring your appetite and your friends!"
+      },
+      "reception": {
+        "title": "Main Stage & Gatherings",
+        "text": "Join us for live performances, open mic sessions, and communal gatherings to celebrate art and music."
+      },
+      "packing": {
+        "title": "What to Bring",
+        "text": "Here are some essentials for your festival experience:",
+        "list": [
+          "Comfortable clothes for day and night.",
+          "Sturdy shoes for walking and dancing.",
+          "Swimwear and towel for nearby natural spots.",
+          "Reusable water bottle to stay hydrated.",
+          "Your favorite festival gear and positive vibes!"
+        ]
+      },
+      "gifts": {
+        "title": "Support and Contributions",
+        "text": "If you’d like to support the festival, please consider contributing via {paypal}. Thank you for helping us keep the spirit alive!",
+        "slots": [
+          {
+            "key": "paypal",
+            "value": "PAYPAL_LINK",
+            "text": "Paypal"
+          }
+        ]
+      }
     }
   },
   "rsvp": {
     "wouldLikeTo": "would like to",
-    "invite": "Invite {name} to their wedding",
+    "invite": "Invite {name} to join the festival",
     "loadingInvite": "Fetching your invite...",
     "guest": "guest",
-    "alert-header": "RSVP already has been submitted.",
-    "alert-submitted": "Your previous RSVP was successfully submitted and your details have been securely stored. Please be aware that any new submission will replace your earlier one."
+    "alert-header": "RSVP already received.",
+    "alert-submitted": "Thank you! Your RSVP was successfully submitted and your details have been securely stored. Any new submission will overwrite the previous one."
   },
   "form": {
-    "inviteTitle": "Invite Information",
+    "inviteTitle": "RSVP Details",
     "additionalNotes": "Additional Notes or Questions",
     "guestInformation": "Guest Information",
     "firstName": "First Name",
@@ -130,63 +147,138 @@
       "true": "Attending",
       "false": "Not Attending"
     },
-    "selectDatesLabel": "Select days you will be staying with us",
-    "dateSelectionHint": "Hint: choose the arrival and departure date to select the days you will be staying",
+    "boolean": {
+      "true": "yes",
+      "false": "no"
+    },
+    "selectDatesLabel": "Select days you plan to attend",
+    "dateSelectionHint": "Choose your arrival and departure dates",
     "buttonCancel": "Respond later",
-    "buttonSubmit": "Save your RSVP",
+    "buttonSubmit": "Submit your RSVP",
     "buttonClose": "Close",
-    "saveErrorTitle": "There was an error saving your invite",
-    "saveErrorMessage": "Please wait a minute and try saving your invite again. If this error continues, please contact the wedding nerds with a screenshot of this page."
+    "saveErrorTitle": "Error saving your RSVP",
+    "saveErrorMessage": "Please try again shortly. If the problem persists, contact us with a screenshot.",
+    "arrivingByTrain": "Are you arriving by train?"
   },
   "sharedPhotos": {
-    "title": "Share Your Favorite Photos!",
-    "description-1": "Do you have a special memory captured in a photo? Whether it's a moment we've shared together or from different stages of our lives, we'd love for you to share it with us! Your photos will be part of a beautiful display during our celebration.",
-    "description-1-2": "Do you have a special memory captured in a photo? Whether it's a moment we've shared together or a snapshot from different stages of our lives, we'd love for you to share it with us! Your photos will be part of a beautiful display during our celebration.",
-    "description-2": "We've set up a private folder for secure uploads.",
+    "title": "Share Your Favorite Festival Moments!",
+    "description": [
+      "Have an epic photo or video from past festivals or this one? We’d love to see it!",
+      "Uploads will be displayed as part of our festival memory wall."
+    ],
     "cta": "Upload your photos here!"
   },
   "confirmation": {
     "title": "Thank you {guests} for registering",
-    "homepage": "Back to our website",
-    "custom-timeline": "Custom timeline of the weekend schedule",
-    "text-1": "We have created a schedule of our wedding weekend to help you get excited!",
-    "text-2": "You can also save your weekend plans to the calendar"
+    "homepage": "Back to festival homepage",
+    "custom-timeline": "Your personalized festival schedule",
+    "text-1": "We’ve prepared a lineup of events to make your experience unforgettable!",
+    "text-2": "Add your favorite sessions to your calendar"
   },
   "calendar": {
     "eventMain": "Add day to Calendar",
-    "eventWeekend": "Add trip to Calendar",
-    "eventTitle": "Laurence and Romain's wedding",
-    "eventWeekendTitle": "Weekend away to Laurence and Romain's wedding",
-    "eventDescription": "Join Laurence Barnes and Romain Micheli celebrate their love"
+    "eventWeekend": "Add full festival to Calendar",
+    "eventTitle": "Boutique Festival Experience",
+    "eventWeekendTitle": "Festival Weekend Getaway",
+    "eventDescription": "Join us for a unique celebration of music, art, and community in a beautiful natural setting."
   },
   "validationRules": {
-    "requiredDates": "Please select a valid date range.",
-    "attendance": "Attendance is required.",
+    "requiredDates": "Please select valid dates.",
+    "attendance": "Attendance status is required.",
     "fieldRequired": "This field is required.",
-    "requiredAttention": "You have some errors in your form. They require your attention before we can submit your data."
+    "requiredAttention": "Please fix the errors before submitting."
   },
   "timeline": {
-    "arrival": "Arrival to La Varenne de Douy",
-    "saturday-setup": "We will ask those who are available to help us set up for the wedding—putting out tables and hanging up decorations.",
-    "saturday-picnic": "We will have a little picnic by the pool to welcome everybody who is staying with us.",
-    "sunday-drinks": "We will start things off with pre-drinks.",
-    "sunday-ceremony": "The ceremony will begin.",
-    "sunday-celebration": "Celebrations, drinks, and we will fire up the BBQ.",
-    "sunday-afterparty": "After-party for those who are staying at La Varenne de Douy.",
-    "monday-farewell": "As it's your last day, you are welcome to stay as long as you want today, so take your time to pack and enjoy one last swim or hike. We are just really grateful to have spent our wedding with you and cannot wait to see you again soon.",
-    "monday-day": "We will celebrate Bastille Day in France as a recovery day. Relax by the pool and drink Champagne. And for those who wish to explore the surrounding villages, we can make some recommendations.",
-    "tuesday-farewell": "Our final day together, but we can spend most of it before saying our goodbyes or see-you-soons. You can spend the day with us, as checkout is at {time}.",
-    "tuesday-day": "You have time for one last hike, swim, or little boat ride around the pond. You can also take a little trip around the surrounding villages and come back for afternoon tea before driving to the airport."
+    "arrival": "Arrival at {venueName}",
+    "train": {
+      "text": "We can assist with pickups from {trainStation}. Remember to book your {ticket} and share arrival times with us.",
+      "trainStation": "the local train station",
+      "ticket": "train ticket"
+    },
+    "friday-setup": "Help us set up the festival grounds if you’re available.",
+    "friday-gathering": "Evening welcome gathering with light music and drinks.",
+    "saturday-music": "Live performances and workshops all day.",
+    "saturday-night": "Campfire jam and storytelling under the stars.",
+    "sunday-brunch": "Community brunch to wind down and share memories.",
+    "sunday-farewell": "Farewell hugs and safe travels!"
   },
   "error-state": {
     "invite-id-missing": {
-      "title": "Your invite ID appears to be missing.",
-      "message": "No user ID included in the URL. Please check the link we sent to you and try again."
+      "title": "Invite ID missing.",
+      "message": "No invite ID was found in your link. Please check and try again."
     },
-    "return-home": "Take me back home",
+    "return-home": "Return to homepage",
     "invite-get": {
-      "title": "Failed to get your invitation 😢",
-      "message": "There has been an issue finding your invitation. Please check the URL we sent you, as the link may be incorrect. If the problems continue, please let us know."
+      "title": "Unable to retrieve your invitation 😢",
+      "message": "There was an issue accessing your invite. Please check your link or contact us for assistance."
     }
+  },
+  "photoUpload": {
+    "link": "https://driveuploader.com/upload/placeholder/",
+    "title": "Share Your Festival Photos",
+    "cardTitle": "Be part of our celebration",
+    "description": [
+      "We’re collecting photos that capture the spirit of the festival — fun, friendship, and unforgettable moments.",
+      "Please share your favorite shots to help us tell the story."
+    ],
+    "sections": [
+      {
+        "type": "header",
+        "content": "Tips for submitting your photos:"
+      },
+      {
+        "type": "list",
+        "content": [
+          "Pick photos that tell a story or spark joy.",
+          "All kinds of moments are welcome — silly, sweet, or spectacular!",
+          "Your photos will be displayed during the festival.",
+          "Choose your favorites — no need to send everything."
+        ]
+      },
+      {
+        "type": "paragraphs",
+        "content": [
+          "Thank you for sharing your memories and helping us celebrate in the most personal way!"
+        ]
+      }
+    ]
+  },
+  "uploadSupport": {
+    "mobile": [
+      {
+        "type": "subheader",
+        "content": "On mobile"
+      },
+      {
+        "type": "list",
+        "content": [
+          "Tap the image you want to select.",
+          "To upload multiple images, hold down on the image."
+        ]
+      }
+    ],
+    "desktop": [
+      {
+        "type": "subheader",
+        "content": "On desktop"
+      },
+      {
+        "type": "list",
+        "content": [
+          "Drag images into the upload area.",
+          "Or click to select your files."
+        ]
+      }
+    ]
+  },
+  "photoShare": {
+    "link": "https://driveuploader.com/upload/placeholder/",
+    "title": "Share Your Memories",
+    "cardTitle": "Help us collect photos and videos from the festival",
+    "description": [
+      "Upload any photos and videos you’ve captured during the event.",
+      "You can also share albums via cloud services — just email us for access details.",
+      "All content is stored privately and securely."
+    ]
   }
 }

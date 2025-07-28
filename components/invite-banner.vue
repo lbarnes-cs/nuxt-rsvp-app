@@ -19,15 +19,15 @@
       >
         <template v-if="guests?.length">
           <p class="text-h4 secondary-font font-weight-bold">
-            {{ $t("personOne") }} {{ $t("and") }} {{ $t("personTwo") }}
+            {{ personA.firstName }} {{ $t('and') }} {{ personB.firstName }}
           </p>
           <p class="text-h3 secondary-font font-weight-medium">
-            {{ $t("rsvp.invite", { name: inviteName }) }}
+            {{ $t('rsvp.invite', { name: inviteName }) }}
           </p>
         </template>
         <template v-else>
           <p class="text-h4 secondary-font font-weight-bold">
-            {{ $t("rsvp.loadingInvite") }}
+            {{ $t('rsvp.loadingInvite') }}
           </p>
         </template>
       </v-col>
@@ -36,33 +36,34 @@
 </template>
 
 <script setup lang="ts">
-import { useFormatGuestNames } from "@/composables/useFormatGuestNames";
+  import { useFormatGuestNames } from '@/composables/useFormatGuestNames';
+  import { personA, personB } from '@/constants/people';
 
-import type { GuestType } from "@/types/guest";
+  import type { GuestType } from '@/types/guest';
 
-const props = defineProps<{
-  guests?: GuestType[];
-}>();
+  const props = defineProps<{
+    guests?: GuestType[];
+  }>();
 
-// Use computed property to get invite name
-const inviteName = computed(() => {
-  // Ensure guests are available before calling useFormatGuestNames
-  return useFormatGuestNames(props.guests).value;
-});
+  // Use computed property to get invite name
+  const inviteName = computed(() => {
+    // Ensure guests are available before calling useFormatGuestNames
+    return useFormatGuestNames(props.guests).value;
+  });
 </script>
 
 <style lang="scss" scoped>
-.banner {
-  background-image: url("@/assets/images/stripe-thin.png");
-  background-position: center;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  background-color: rgba(#efe8c0, 0.6);
-  background-blend-mode: hard-light;
+  .banner {
+    background-image: url('@/assets/images/stripe-thin.png');
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-color: rgba(#efe8c0, 0.6);
+    background-blend-mode: hard-light;
 
-  .v-theme--dark & {
-    background-blend-mode: difference;
-    background-color: rgba(#efe8c0, 0.3);
+    .v-theme--dark & {
+      background-blend-mode: difference;
+      background-color: rgba(#efe8c0, 0.3);
+    }
   }
-}
 </style>

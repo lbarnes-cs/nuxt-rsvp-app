@@ -1,17 +1,16 @@
 /**
- * Generate a UUID (v4) using the built-in crypto API
+ * Generates a UUID (v4) using the browser's crypto API.
  *
- * @returns {string} UUID
+ * @returns {string} A UUID string.
+ * @throws {Error} If `crypto.randomUUID()` is not supported in the environment.
  */
-export const generateUUID = (): string => {
-  try {
+export function generateUUID(): string {
+  if (typeof crypto?.randomUUID === 'function') {
     return crypto.randomUUID();
-  } catch (error) {
-    throw new Error(
-      `Your browser doesn't support generating UUIDs. 
-      Please use a modern browser or 
-      <a href="https://www.uuidgenerator.net/" target="_blank" ref="nofollow noindex" class="app-link">
-      add a UUID manually</a>`
-    );
   }
-};
+
+  // Optional: Provide fallback behavior here if needed
+  throw new Error(
+    "Your browser doesn't support generating UUIDs. Please use a modern browser or manually provide a UUID.",
+  );
+}

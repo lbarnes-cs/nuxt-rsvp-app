@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware((to) => {
   // Ensure middleware logic runs only on the client side
-  if (process.server) return;
+  if (import.meta.server) return;
 
   const i18n = useNuxtApp().$i18n;
   const { locales, defaultLocale, locale: currentLocale, setLocale } = i18n;
@@ -8,7 +8,7 @@ export default defineNuxtRouteMiddleware((to) => {
   // Parse locales to an array of codes (if locales are objects)
   const localeCodes = Array.isArray(locales)
     ? locales.map((locale) =>
-        typeof locale === "string" ? locale : locale.code
+        typeof locale === 'string' ? locale : locale.code,
       )
     : [];
 
@@ -18,11 +18,11 @@ export default defineNuxtRouteMiddleware((to) => {
   // Find a matching locale from browser language
   const matchedLocale =
     localeCodes.find((locale) =>
-      browserLang.toLowerCase().startsWith(locale.toLowerCase())
+      browserLang.toLowerCase().startsWith(locale.toLowerCase()),
     ) || defaultLocale;
 
   // Avoid redirect if the default locale is "en" and the user is already in "en"
-  if (matchedLocale === defaultLocale && defaultLocale === "en") {
+  if (matchedLocale === defaultLocale && defaultLocale === 'en') {
     return;
   }
 
