@@ -39,7 +39,7 @@
         size="small"
       >
         {{ locale.flag }}
-        <span class="ml-2">{{ $t(locale.localeKey) }}</span>
+        <span class="ml-2">{{ locale.code }}</span>
       </v-btn>
     </div>
   </div>
@@ -49,10 +49,10 @@
   const switchLocalePath = useSwitchLocalePath();
 
   const supportedLocale = [
-    { code: 'en', localeKey: 'locale.en', flag: '🇬🇧' },
-    { code: 'fr', localeKey: 'locale.fr', flag: '🇫🇷' },
-    { code: 'de', localeKey: 'locale.de', flag: '🇩🇪' },
-    { code: 'it', localeKey: 'locale.it', flag: '🇮🇹' },
-    { code: 'pl', localeKey: 'locale.pl', flag: '🇵🇱' },
+    { code: 'en', flag: '🇬🇧' },
+    { code: 'fr', flag: '🇫🇷' },
+    { code: 'de', flag: '🇩🇪' },
+    { code: 'it', flag: '🇮🇹' },
+    { code: 'pl', flag: '🇵🇱' },
   ];
 </script>
