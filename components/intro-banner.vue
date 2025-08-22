@@ -16,13 +16,30 @@
       </h1>
 
       <h2 class="text-h3 mb-4 sm-mb-8">{{ $t('banner.gettingMarried') }}</h2>
-      <span class="text-h4 text-uppercase">{{ $t('banner.date') }}</span>
+      <span class="text-h4 text-uppercase">
+        {{ eventDate }}
+      </span>
     </div>
   </v-parallax>
 </template>
 
 <script setup lang="ts">
   import { personA, personB } from '@/constants/people';
+
+  import { useDateFormatter } from '@/composables/useDateFormatter';
+
+  import { eventInfo } from '@/constants/event';
+
+  const { t } = useI18n();
+  const { formatLocaleDate } = useDateFormatter();
+
+  const eventDate = computed(() => {
+    if (!eventInfo.eventDate.startDate) {
+      return t('banner.date');
+    }
+
+    return formatLocaleDate(eventInfo.eventDate.startDate);
+  });
 
   const gradient =
     'to top right, rgba(255, 0, 0, 50%) 0%, rgba(255, 154, 0, 50%) 30%, rgba(208, 222, 33, 50%) 20%, rgba(79, 220, 74, 50%) 30%, rgba(63, 218, 216, 50%) 40%, rgba(47, 201, 226, 50%) 50%, rgba(28, 127, 238, 50%) 60%, rgba(95, 21, 242, 50%) 70%, rgba(186, 12, 248, 50%) 80%, rgba(251, 7, 217, 50%) 90%, rgba(255, 0, 0, 50%) 100%';
