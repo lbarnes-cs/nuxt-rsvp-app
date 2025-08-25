@@ -1,17 +1,20 @@
-import { getSupabaseClient } from '@/utils/supabase';
-import { defineEventHandler, getRouterParam, readBody } from 'h3';
+import { getSafeSupabaseClient } from '@/utils/getSafeSupabaseClient';
 import type { PostgrestError as _PostgrestError } from '@supabase/supabase-js';
+import { defineEventHandler, getRouterParam, readBody } from 'h3';
 
 import type { InviteType } from '@/types/invite';
+import { ServerErrorEnums } from '@/types/apiErrors';
 
 export default defineEventHandler(async (event) => {
-  const client = await getSupabaseClient();
+  const supabase = await getSafeSupabaseClient();
+
   const inviteId = getRouterParam(event, 'inviteId');
 
   if (!inviteId) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'Invite ID is required',
+      message: 'Invite ID is required',
+      statusMessage: ServerErrorEnums.MISSING_INVITE_ID,
     });
   }
 
@@ -23,7 +26,7 @@ export default defineEventHandler(async (event) => {
     if (body?.guests?.length) {
       const guestIds = body.guests.map((guest) => guest.id);
 
-      const { error: guestError } = await client
+      const { error: guestError } = await supabase
         .from('guests')
         .delete()
         .in('id', guestIds);
@@ -31,7 +34,8 @@ export default defineEventHandler(async (event) => {
       if (guestError) {
         throw createError({
           statusCode: 400,
-          statusMessage: 'Bad Reuqest: Failed to delete guests',
+          message: 'Bad Reuqest: Failed to delete guests',
+          statusMessage: ServerErrorEnums.GUEST_DELETE_FAILED,
           data: JSON.stringify(guestError),
         });
       }
@@ -39,14 +43,15 @@ export default defineEventHandler(async (event) => {
   } catch (err: _PostgrestError | unknown) {
     throw createError({
       statusCode: 500,
-      statusMessage: 'An error occurred whilst deleting guests',
+      message: 'An error occurred whilst deleting guests',
+      statusMessage: ServerErrorEnums.GUEST_DELETE_FAILED,
       data: JSON.stringify(err),
     });
   }
 
   try {
     // Step 2: Delete the invite
-    const { error: inviteError } = await client
+    const { error: inviteError } = await supabase
       .from('invites')
       .delete()
       .eq('id', inviteId);
@@ -54,7 +59,8 @@ export default defineEventHandler(async (event) => {
     if (inviteError) {
       throw createError({
         statusCode: 500,
-        statusMessage: 'Failed to delete invite',
+        statusMessage: ServerErrorEnums.INVITE_DELETE_FAILED,
+        message: 'Failed to delete invite',
         data: JSON.stringify(inviteError),
       });
     }
@@ -63,7 +69,8 @@ export default defineEventHandler(async (event) => {
   } catch (err: _PostgrestError | unknown) {
     throw createError({
       statusCode: 500,
-      statusMessage: 'An error occurred whilst deleting invite',
+      statusMessage: ServerErrorEnums.INTERNAL_SERVER_ERROR,
+      message: 'An error occurred whilst deleting invite',
       data: JSON.stringify(err),
     });
   }

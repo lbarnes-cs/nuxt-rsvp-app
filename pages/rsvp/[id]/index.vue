@@ -112,7 +112,6 @@
 
 <script lang="ts" setup>
   import { useRoute } from 'vue-router';
-  import { createError } from '#app';
 
   import type { InviteType } from '@/types/invite';
 
@@ -123,6 +122,8 @@
 
   import inviteBanner from '@/components/invite-banner.vue';
   import cardUploadPhotos from '@/components/card-upload-photos.vue';
+  import type { NuxtError } from 'nuxt/app';
+  import type { H3Error } from 'h3';
 
   // Useful code
   const route = useRoute();
@@ -139,20 +140,19 @@
   const invite = ref<InviteType>({} as InviteType);
 
   // Fetch invite data with error handling
-  const { data: inviteData, error: inviteError } =
-    await useAsyncData<InviteType>('inviteData', () =>
-      $fetch(`/api/invite/${inviteId}`),
-    );
+  const { data: inviteData, error: inviteError } = await useAsyncData<
+    InviteType,
+    H3Error | NuxtError
+  >('inviteData', () => $fetch(`/api/invite/${inviteId}`));
 
   if (inviteError.value) {
-    const nuxtError = createError({
-      statusCode: 404,
+    const handleError = handleApiError(inviteError.value, {
       statusMessage: t('error-state.invite-get.title'),
-      message: `<p>${t('error-state.invite-get.message')}</p><p class="mt-4 font-italic">Message: ${inviteError.value}</p>`,
+      message: t('error-state.invite-get.message'),
     });
 
-    useError().value = nuxtError;
-    throw nuxtError;
+    useError().value = handleError;
+    throw handleError;
   }
 
   invite.value = inviteData.value as InviteType;

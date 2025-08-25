@@ -1,9 +1,9 @@
-import { getSupabaseClient } from '@/utils/supabase';
+import { getSafeSupabaseClient } from '@/utils/getSafeSupabaseClient';
 
 import type { GuestType } from '@/types/guest';
 
 export default defineEventHandler(async () => {
-  const supabase = await getSupabaseClient();
+  const supabase = await getSafeSupabaseClient();
 
   // Use the base query to select guests
   const query = supabase

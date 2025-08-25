@@ -304,6 +304,7 @@
     layout: 'basic',
   });
 
+  const { t } = useI18n();
   const localePath = useLocalePath();
   const { mdAndUp } = useDisplay();
 
@@ -361,13 +362,13 @@
 
   // Handle errors from API fetch
   if (inviteError.value) {
-    const nuxtError = createError({
-      statusCode: 404,
-      statusMessage: 'Failed to get list of invites 😢',
-      message: `<p>There has been an issue finding the invitation.</p> <p class="mt-4 font-italic">Message: ${inviteError.value}</p>`,
+    const handleError = handleApiError(inviteError.value, {
+      statusMessage: t('error-state.invite-list-get.title'),
+      message: t('error-state.invite-list-get.message'),
     });
-    useError().value = nuxtError; // Make sure the error is properly handled
-    throw nuxtError;
+
+    useError().value = handleError;
+    throw handleError;
   }
 
   // Table headers

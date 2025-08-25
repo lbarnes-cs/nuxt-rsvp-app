@@ -211,6 +211,10 @@
     "invite-get": {
       "title": "Unable to retrieve your invitation 😢",
       "message": "There was an issue accessing your invite. Please check your link or contact us for assistance."
+    },
+    "invite-list-get": {
+      "title": "Failed to get list of invites 😢",
+      "message": "There has been an issue finding the invitation."
     }
   },
   "photoUpload": {

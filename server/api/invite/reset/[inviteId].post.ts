@@ -1,10 +1,11 @@
 import type { PostgrestError as _PostgrestError } from '@supabase/supabase-js';
-import { getSupabaseClient } from '@/utils/supabase';
+import { getSafeSupabaseClient } from '@/utils/getSafeSupabaseClient';
 
 import type { InviteType } from '@/types/invite';
+import { ServerErrorEnums } from '@/types/apiErrors';
 
 export default defineEventHandler(async (event) => {
-  const supabase = await getSupabaseClient();
+  const supabase = await getSafeSupabaseClient();
 
   const { inviteId } = event.context.params ?? {};
 
@@ -14,6 +15,7 @@ export default defineEventHandler(async (event) => {
   if (!inviteId || inviteId.trim() === '') {
     throw createError({
       statusCode: 400,
+      statusMessage: ServerErrorEnums.MISSING_INVITE_ID,
       message: 'Invite ID is required and cannot be empty',
     });
   }
@@ -39,6 +41,7 @@ export default defineEventHandler(async (event) => {
 
     throw createError({
       statusCode: 500,
+      statusMessage: ServerErrorEnums.INVITE_SAVE_FAILED,
       message: 'Error resetting Invite information',
     });
   }
@@ -65,8 +68,9 @@ export default defineEventHandler(async (event) => {
 
       throw createError({
         statusCode: 500,
+        statusMessage: ServerErrorEnums.GUEST_SAVE_FAILED,
         message: `Error resetting guest information for guest ${guest.id}`,
-        statusMessage: JSON.stringify(err),
+        data: JSON.stringify(err),
       });
     }
   }

@@ -1,18 +1,27 @@
-import { getSupabaseClient } from '@/utils/supabase';
+import { getSafeSupabaseClient } from '@/utils/getSafeSupabaseClient';
 
+import { ServerErrorEnums } from '@/types/apiErrors';
 import type { InviteAdminType, InviteType } from '@/types/invite';
 import type { GuestType } from '@/types/guest';
 
 export default defineEventHandler(async () => {
-  const supabase = await getSupabaseClient();
+  const supabase = await getSafeSupabaseClient();
+
+  console.log('Fetching all invites and guests...');
 
   const { data: allInvites, error: invitesError } = await supabase
     .from('invites')
     .select('*');
 
   if (invitesError) {
-    console.error('Error fetching invites:', invitesError.message); // Add logging here
-    throw createError({ statusCode: 404, message: 'Invites not found' });
+    // TODO: Add logging here, send errors to an external service
+    console.error('Error fetching invites:', invitesError.message);
+
+    throw createError({
+      statusCode: 404,
+      statusMessage: ServerErrorEnums.INVITE_NOT_FOUND,
+      message: 'Invites not found',
+    });
   }
 
   const { data: allGuests } = await supabase

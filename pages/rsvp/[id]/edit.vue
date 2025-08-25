@@ -152,8 +152,6 @@
   import { useGoTo } from 'vuetify';
   import { VDateInput } from 'vuetify/labs/VDateInput';
 
-  import { createError } from '#app';
-
   import type { NuxtError } from 'nuxt/app';
   import type { InternalGoToOptions } from 'vuetify/lib/composables/goto';
   import type { InviteType } from '@/types/invite';
@@ -165,7 +163,6 @@
   import { useDateFormatter } from '@/composables/useDateFormatter';
   import { useFormValidation } from '@/composables/useFormValidation';
   import { useSnackbar } from '@/composables/useSnackbar';
-
 
   import { eventInfo } from '@/constants/event';
 
@@ -202,16 +199,13 @@
 
   // Handle errors from API fetch
   if (inviteError.value) {
-    const nuxtError = createError({
-      statusCode: 404,
+    const handleError = handleApiError(inviteError.value, {
       statusMessage: t('error-state.invite-get.title'),
-      message: `<p>${t(
-        'error-state.invite-get.message',
-      )}</p> <p class="mt-4 font-italic">Message: ${inviteError.value}</p>`,
+      message: t('error-state.invite-get.message'),
     });
 
-    useError().value = nuxtError; // Make sure the error is properly handled
-    throw nuxtError;
+    useError().value = handleError; // Make sure the error is properly handled
+    throw handleError;
   }
 
   // Update states
